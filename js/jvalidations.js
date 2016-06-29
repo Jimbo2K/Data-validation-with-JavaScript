@@ -9,8 +9,8 @@ Developed with Sublime Text 3*/
 /*Float (positive or negative) number validation
 Validación de número real, positivo o negativo*/
 //ARG: pnum (string or number value)
-//OUTPUT: true id pnum is a float number (integer numbers are also considered float), else false
-function validaNum(pnum) {
+//OUTPUT: true if pnum is a float number (integer numbers are also considered float), else false
+function validFloat1(pnum) {
 	var aux1, aux2, salida;
 	//pnum IS NOT a number? / ¿pnum NO ES un número?
 	aux1=isNaN(pnum);
@@ -38,15 +38,95 @@ function stringIsFloat(pnum) {
 	return salida;
 }
 
+/*Positive float number validation
+Validación de número real positivo*/
+//ARG: pnum (string or number value)
+//OUTPUT: true if pnum is a positive float number (integer numbers are also considered float), else false
+function validPFloat(pnum) {
+	var aux1, aux2, aux3, salida;
+	//pnum IS NOT a number? / ¿pnum NO ES un número?
+	aux1=isNaN(pnum);
+	//pnum is ' ' or ''? / ¿pnum es ' ' ó ''?
+	//isNaN() considers '' and ' ' as numbers / isNaN() considera '' y ' ' como números
+	aux2=Boolean(aux1===' ' || aux1==='');
+	/*If pnum is a number, is it negative?. If pnum is not a number it doesn't matters /
+	Si pnum es un número, ¿es negativo?. Si no es un número da igual*/
+	aux3=(!aux2 ? (pnum < 0) : true );
+	/*if one of the 2 conditions/vars are true, pnum isn't a VALID number /
+	  si una de las 2 condiciones/variables es cierta, pnum no es un número válido*/
+	if (aux1 || aux2 || aux3) {salida=false;}
+	else {salida=true;}
+	return salida;
+}
+
+/*Positive float number validation
+Validación de número real positivo*/
+//ARG: pnum (string or number value)
+//OUTPUT: true if pnum is a positive float number (integer numbers are also considered float), else false
+function stringIsPFloat(pnum) {
+	var rexp=/^\s*(?:\d+\.?\d*)\s*$/;
+	var salida=Boolean(rexp.exec(pnum));
+	return salida;
+}
+
+/*Negative float number validation
+Validación de número real negativo*/
+//ARG: pnum (string or number value)
+//OUTPUT: true if pnum is a negative float number (integer numbers are also considered float), else false
+function validNFloat(pnum) {
+	var aux1, aux2, aux3, salida;
+	//pnum IS NOT a number? / ¿pnum NO ES un número?
+	aux1=isNaN(pnum);
+	//pnum is ' ' or ''? / ¿pnum es ' ' ó ''?
+	//isNaN() considers '' and ' ' as numbers / isNaN() considera '' y ' ' como números
+	aux2=Boolean(aux1===' ' || aux1==='');
+	/*If pnum is a number, is it positive?. If pnum is not a number it doesn't matters /
+	Si pnum es un número, ¿es positivo?. Si no es un número da igual*/
+	aux3=(!aux2 ? (pnum > 0) : true );
+	/*if one of the 2 conditions/vars are true, pnum isn't a VALID number /
+	  si una de las 2 condiciones/variables es cierta, pnum no es un número válido*/
+	if (aux1 || aux2 || aux3) {salida=false;}
+	else {salida=true;}
+	return salida;
+}
+
+/*Negative float number validation
+Validación de número real negativo*/
+//ARG: pnum (string or number value)
+//OUTPUT: true if pnum is a negative float number (integer numbers are also considered float), else false
+function stringIsNFloat(pnum) {
+	var rexp=/^\s*(?:-\d+\.?\d*)\s*$/;
+	var salida=Boolean(rexp.exec(pnum));
+	return salida;
+}
+
+/*Float (positive or negative), float positive or float negative number validation
+Validación de número real (positivo o negativo), real positivo o real negativo*/
+//ARG: pnum (string or number value) ; OPTIONAL psign (none or no valid value, pnum can be +/- ; 1 pnum +float ; -1 pnum -float)
+//OUTPUT: true if pnum is an valid float number, else false
+function validFloat(pnum, psign) {
+	/*We supose pnum can be positive or negative /
+	Suponemos que pnum puede ser positico o negativo*/
+	var rexp=/^\s*(?:-?\d+\.?\d*)\s*$/;
+	/*if psign=1 we look for positive numbers /
+	si psign=1 buscamos números positivos*/
+	if (psign==1){rexp=/^\s*(?:\d+\.?\d*)\s*$/;} //Use psign==1 instead of psign===1, because 1 is is not strictly equal to to '1'
+	/*if psign=-11 we look for negative numbers /
+	si psign=-11 buscamos números negativos*/
+	else if(psign==-1){rexp=/^\s*(?:-\d+\.?\d*)\s*$/;} //Use psign==-1 instead of psign===-1, because 1 is is not strictly equal to to '1'
+	var salida=Boolean(rexp.exec(pnum));
+	return salida;
+}
+
 /***** INTEGER NUMBERS *****/
 
 /*Integer (positive or negative) number validation
 Validación de número entero, positivo o negativo*/
 //ARG: pnum (string or number value)
 //OUTPUT: true if pnum is an integer number, else false
-function validaInt(pnum){
+function validInt1(pnum){
 	var aux1, aux2, aux3;
-	aux1=isNan(pnum);
+	aux1=isNaN(pnum);
 	aux2=Boolean(aux1===' ' || aux1==='');
 	//12.37 - parseInt(12.37) === (12.37 - 12) = 0.37 !== 0 - float
 	//12 - parseInt(12) === (12 - 12) === 0 - int
@@ -70,9 +150,9 @@ function stringIsInt(pnum) {
 Validación de número entero positivo*/
 //ARG: pnum (string or number value)
 //OUTPUT: true if pnum is an positive integer number, else false
-function validaPInt(pnum){
+function validPInt(pnum){
 	var aux1, aux2, aux3, aux4;
-	aux1=isNan(pnum);
+	aux1=isNaN(pnum);
 	aux2=(aux1===' ' || aux1==='');
 	/*If pnum is a number, is it negative?. If pnum is not a number it doesn't matters /
 	Si pnum es un número, ¿es negativo?. Si no es un número da igual*/
@@ -99,9 +179,9 @@ function stringIsPInt(pnum) {
 Validación de número entero negativo*/
 //ARG: pnum (string or number value)
 //OUTPUT: true if pnum is an integer number, else false
-function validaNInt(pnum){
+function validNInt(pnum){
 	var aux1, aux2, aux3, aux4;
-	aux1=isNan(pnum);
+	aux1=isNaN(pnum);
 	aux2=(aux1===' ' || aux1==='');
 	/*If pnum is a number, is it positive?. If pnum is not a number it doesn't matters /
 	Si pnum es un número, ¿es positivo?. Si no es un número da igual*/
@@ -134,10 +214,10 @@ function validInt(pnum, psign) {
 	var rexp=/^\s*(?:-?\d+)\s*$/;
 	/*if psign=1 we look for positive numbers /
 	si psign=1 buscamos números positivos*/
-	if (psign===1){rexp=/^\s*(?:0*[1-9]+)\s*$/;}
+	if (psign==1){rexp=/^\s*(?:0*[1-9]+)\s*$/;} //Use psign==1 instead of psign===1, because 1 is is not strictly equal to to '1'
 	/*if psign=-11 we look for negative numbers /
 	si psign=-11 buscamos números negativos*/
-	else if(psing===-1){rexp=/^\s*(?:-0*[1-9]+)\s*$/;}
+	else if(psign==-1){rexp=/^\s*(?:-0*[1-9]+)\s*$/;} //Use psign==-1 instead of psign===-1, because 1 is is not strictly equal to to '1'
 	var salida=Boolean(rexp.exec(pnum));
 	return salida;
 }

@@ -1,0 +1,30 @@
+body {
+	font-family: arial;
+}
+
+ul {
+	list-style-type: none;
+}
+
+.contenedor {
+	display: flex;
+	justify-content: space-around;
+}
+.bloque {
+	width: 30%;
+	border: 1px solid #999;
+}
+
+.bloque h3 {
+	margin: .5em 1em 0 1em;
+}
+
+.bloque span {
+	color: blue;
+	padding-left: 2em;
+}
+
+button {
+	margin: .3em;
+	width: 10em;
+}
