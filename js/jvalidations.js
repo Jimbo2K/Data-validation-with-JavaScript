@@ -4,6 +4,8 @@ Developed with Sublime Text 3*/
 
 /********** NUMBER VALIDATIONS/VALIDACIONES NUMÉRICAS **********/
 
+/***** FLOAT NUMBERS *****/
+
 /*Float (positive or negative) number validation
 Validación de número real, positivo o negativo*/
 //ARG: pnum (string or number value)
@@ -35,6 +37,8 @@ function stringIsFloat(pnum) {
 	var salida=Boolean(rexp.exec(pnum));
 	return salida;
 }
+
+/***** INTEGER NUMBERS *****/
 
 /*Integer (positive or negative) number validation
 Validación de número entero, positivo o negativo*/
@@ -116,6 +120,24 @@ Validación de número entero negativo*/
 //OUTPUT: true if pnum is an integer number, else false
 function stringIsNInt(pnum) {
 	var rexp=/^\s*(?:-0*[1-9]+)\s*$/;
+	var salida=Boolean(rexp.exec(pnum));
+	return salida;
+}
+
+/*Integer (positive or negative), integer positive o integer negative number validation
+Validación de número entero (positivo o negativo), entero positivo o entero negativo*/
+//ARG: pnum (string or number value) ; OPTIONAL psign (none or no valid value, pnum can be +/- ; 1 pnum +int ; -1 pnum -int)
+//OUTPUT: true if pnum is an valid integer number, else false
+function validInt(pnum, psign) {
+	/*We supose pnum can be positive or negative /
+	Suponemos que pnum puede ser positico o negativo*/
+	var rexp=/^\s*(?:-?\d+)\s*$/;
+	/*if psign=1 we look for positive numbers /
+	si psign=1 buscamos números positivos*/
+	if (psign===1){rexp=/^\s*(?:0*[1-9]+)\s*$/;}
+	/*if psign=-11 we look for negative numbers /
+	si psign=-11 buscamos números negativos*/
+	else if(psing===-1){rexp=/^\s*(?:-0*[1-9]+)\s*$/;}
 	var salida=Boolean(rexp.exec(pnum));
 	return salida;
 }
