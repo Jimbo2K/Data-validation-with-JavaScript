@@ -11,7 +11,7 @@ Validación de número real, positivo o negativo*/
 //ARG: pnum (string or number value)
 //OUTPUT: true if pnum is a float number (integer numbers are also considered float), else false
 function validFloat1(pnum) {
-	var aux1, aux2, salida;
+	var aux1, aux2, out;
 	//pnum IS NOT a number? / ¿pnum NO ES un número?
 	aux1=isNaN(pnum);
 	//pnum is ' ' or ''? / ¿pnum es ' ' ó ''?
@@ -19,9 +19,9 @@ function validFloat1(pnum) {
 	aux2=Boolean(aux1===' ' || aux1==='');
 	/*if one of the 2 conditions/vars are true, pnum isn't a VALID number /
 	  si una de las 2 condiciones/variables es cierta, pnum no es un número válido*/
-	if (aux1 || aux2) {salida=false;}
-	else {salida=true;}
-	return salida;
+	if (aux1 || aux2) {out=false;}
+	else {out=true;}
+	return out;
 }
 
 /*Float (positive or negative) number validation
@@ -34,8 +34,8 @@ function stringIsFloat(pnum) {
 	/*regexp.exec(string) returns an array if the regexp is found in the string, else it will return null /
 	regexp.exex(string) devuelve un array si encuentra la expresión en la cadena, si no devuelve null*/
 	//Boolean(array)=true; Boolean(null)=false
-	var salida=Boolean(rexp.exec(pnum));
-	return salida;
+	var out=Boolean(rexp.exec(pnum));
+	return out;
 }
 
 /*Positive float number validation
@@ -43,7 +43,7 @@ Validación de número real positivo*/
 //ARG: pnum (string or number value)
 //OUTPUT: true if pnum is a positive float number (integer numbers are also considered float), else false
 function validPFloat(pnum) {
-	var aux1, aux2, aux3, salida;
+	var aux1, aux2, aux3, out;
 	//pnum IS NOT a number? / ¿pnum NO ES un número?
 	aux1=isNaN(pnum);
 	//pnum is ' ' or ''? / ¿pnum es ' ' ó ''?
@@ -54,9 +54,9 @@ function validPFloat(pnum) {
 	aux3=(!aux2 ? (pnum < 0) : true );
 	/*if one of the 2 conditions/vars are true, pnum isn't a VALID number /
 	  si una de las 2 condiciones/variables es cierta, pnum no es un número válido*/
-	if (aux1 || aux2 || aux3) {salida=false;}
-	else {salida=true;}
-	return salida;
+	if (aux1 || aux2 || aux3) {out=false;}
+	else {out=true;}
+	return out;
 }
 
 /*Positive float number validation
@@ -65,8 +65,8 @@ Validación de número real positivo*/
 //OUTPUT: true if pnum is a positive float number (integer numbers are also considered float), else false
 function stringIsPFloat(pnum) {
 	var rexp=/^\s*(?:\d+\.?\d*)\s*$/;
-	var salida=Boolean(rexp.exec(pnum));
-	return salida;
+	var out=Boolean(rexp.exec(pnum));
+	return out;
 }
 
 /*Negative float number validation
@@ -74,7 +74,7 @@ Validación de número real negativo*/
 //ARG: pnum (string or number value)
 //OUTPUT: true if pnum is a negative float number (integer numbers are also considered float), else false
 function validNFloat(pnum) {
-	var aux1, aux2, aux3, salida;
+	var aux1, aux2, aux3, out;
 	//pnum IS NOT a number? / ¿pnum NO ES un número?
 	aux1=isNaN(pnum);
 	//pnum is ' ' or ''? / ¿pnum es ' ' ó ''?
@@ -85,9 +85,9 @@ function validNFloat(pnum) {
 	aux3=(!aux2 ? (pnum > 0) : true );
 	/*if one of the 2 conditions/vars are true, pnum isn't a VALID number /
 	  si una de las 2 condiciones/variables es cierta, pnum no es un número válido*/
-	if (aux1 || aux2 || aux3) {salida=false;}
-	else {salida=true;}
-	return salida;
+	if (aux1 || aux2 || aux3) {out=false;}
+	else {out=true;}
+	return out;
 }
 
 /*Negative float number validation
@@ -96,8 +96,8 @@ Validación de número real negativo*/
 //OUTPUT: true if pnum is a negative float number (integer numbers are also considered float), else false
 function stringIsNFloat(pnum) {
 	var rexp=/^\s*(?:-\d+\.?\d*)\s*$/;
-	var salida=Boolean(rexp.exec(pnum));
-	return salida;
+	var out=Boolean(rexp.exec(pnum));
+	return out;
 }
 
 /*Float (positive or negative), float positive or float negative number validation
@@ -114,8 +114,8 @@ function validFloat(pnum, psign) {
 	/*if psign=-11 we look for negative numbers /
 	si psign=-11 buscamos números negativos*/
 	else if(psign==-1){rexp=/^\s*(?:-\d+\.?\d*)\s*$/;} //Use psign==-1 instead of psign===-1, because 1 is is not strictly equal to to '1'
-	var salida=Boolean(rexp.exec(pnum));
-	return salida;
+	var out=Boolean(rexp.exec(pnum));
+	return out;
 }
 
 /***** INTEGER NUMBERS *****/
@@ -131,9 +131,9 @@ function validInt1(pnum){
 	//12.37 - parseInt(12.37) === (12.37 - 12) = 0.37 !== 0 - float
 	//12 - parseInt(12) === (12 - 12) === 0 - int
 	aux3=Boolean(pnum - parseInt(pnum) !== 0);
-	if (aux1 || aux2 || aux3) {salida=false;}
-	else {salida=true;}
-	return salida;
+	if (aux1 || aux2 || aux3) {out=false;}
+	else {out=true;}
+	return out;
 }
 
 /*Integer (positive or negative) number validation
@@ -142,8 +142,8 @@ Validación de número entero, positivo o negativo*/
 //OUTPUT: true if pnum is an integer number, else false
 function stringIsInt(pnum) {
 	var rexp=/^\s*(?:-?\d+)\s*$/;
-	var salida=Boolean(rexp.exec(pnum));
-	return salida;
+	var out=Boolean(rexp.exec(pnum));
+	return out;
 }
 
 /*Positive integer number validation
@@ -160,9 +160,9 @@ function validPInt(pnum){
 	//12.37 - parseInt(12.37) === (12.37 - 12) = 0.37 !== 0 - float
 	//12 - parseInt(12) === (12 - 12) === 0 - int
 	aux4=Boolean(pnum - parseInt(pnum) !== 0);
-	if (aux1 || aux2 || aux3 || aux4) {salida=false;}
-	else {salida=true;}
-	return salida;
+	if (aux1 || aux2 || aux3 || aux4) {out=false;}
+	else {out=true;}
+	return out;
 }
 
 /*Positive integer number validation
@@ -171,8 +171,8 @@ Validación de número entero positivo*/
 //OUTPUT: true if pnum is an positive integer number, else false
 function stringIsPInt(pnum) {
 	var rexp=/^\s*(?:0*[1-9]+)\s*$/;
-	var salida=Boolean(rexp.exec(pnum));
-	return salida;
+	var out=Boolean(rexp.exec(pnum));
+	return out;
 }
 
 /*Negative integer number validation
@@ -189,9 +189,9 @@ function validNInt(pnum){
 	//12.37 - parseInt(12.37) === (12.37 - 12) = 0.37 !== 0 - float
 	//12 - parseInt(12) === (12 - 12) === 0 - int
 	aux4=Boolean(pnum - parseInt(pnum) !== 0);
-	if (aux1 || aux2 || aux3 || aux4) {salida=false;}
-	else {salida=true;}
-	return salida;
+	if (aux1 || aux2 || aux3 || aux4) {out=false;}
+	else {out=true;}
+	return out;
 }
 
 /*Negative integer number validation
@@ -200,8 +200,8 @@ Validación de número entero negativo*/
 //OUTPUT: true if pnum is an integer number, else false
 function stringIsNInt(pnum) {
 	var rexp=/^\s*(?:-0*[1-9]+)\s*$/;
-	var salida=Boolean(rexp.exec(pnum));
-	return salida;
+	var out=Boolean(rexp.exec(pnum));
+	return out;
 }
 
 /*Integer (positive or negative), integer positive o integer negative number validation
@@ -218,6 +218,18 @@ function validInt(pnum, psign) {
 	/*if psign=-11 we look for negative numbers /
 	si psign=-11 buscamos números negativos*/
 	else if(psign==-1){rexp=/^\s*(?:-0*[1-9]+)\s*$/;} //Use psign==-1 instead of psign===-1, because 1 is is not strictly equal to to '1'
-	var salida=Boolean(rexp.exec(pnum));
-	return salida;
+	var out=Boolean(rexp.exec(pnum));
+	return out;
 }
+
+/***** TELEPHONE NUMBERS *****/
+//GLOBAL VARIABLES / VARIABLES GLOBALES
+
+/*OThe object ' fixedlines ' contains regular expressions to validate strings with fixed telephone numbers in different countries /
+El objeto 'fixedlines' contiene expresiones regulares para validar cadenas con números de teléfono fijos de distintos paises*/
+var fixedlines = {};
+fixedlines.spain=/^\s*\(?(?:(00|\+)34)?\)?[-\/\s]?\d{2,3}[-\/\s]?(?:(\d{3}[-\/\s]?\d{3})|(\d{2}[-\/\s]?\d{2}[-\/\s]?\d{2}))\s*$/;
+fixedlines.france=/^\s*\(?(?:(00|\+)33)?\)?[-\/\s]?0?\d[-\/\s]?\d{2}[-\/\s]?\d{2}[-\/\s]?\d{2}[-\/\s]?\d{2}\s*$/;
+fixedlines.ireland=/^\s*\(?(?:(0|\+)353)?\)?[-\/\s]?0\d{1,5}[-\/\s]?(?:(\d{3}[-\/\s]?\d{3})|(\d{4,6}))\s*$/;
+fixedlines.italy=/^\s*\(?(?:(00|\+)39)?\)?[-\/\s]?06[-\/\s]?\d{8}\s*$/;
+
