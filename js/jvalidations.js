@@ -233,3 +233,16 @@ fixedlines.france=/^\s*\(?(?:(00|\+)33)?\)?[-\/\s]?0?\d[-\/\s]?\d{2}[-\/\s]?\d{2
 fixedlines.ireland=/^\s*\(?(?:(0|\+)353)?\)?[-\/\s]?0\d{1,5}[-\/\s]?(?:(\d{3}[-\/\s]?\d{3})|(\d{4,6}))\s*$/;
 fixedlines.italy=/^\s*\(?(?:(00|\+)39)?\)?[-\/\s]?06[-\/\s]?\d{8}\s*$/;
 
+var languages = [/^es/,/^fr/,/^en/,/^it/];
+
+//idiomadel navegador - navigator.languages ? navigator.languages[0] : (navigator.language || navigator.userLanguage)
+
+function fixedPhone(ptel,pcountry) {
+	var langval = pcountry;
+	var brwlang = navigator.languages ? navigator.languages[0] : (navigator.language || navigator.userLanguage);
+	if (!pcountry) {
+		
+	}
+
+}
+
