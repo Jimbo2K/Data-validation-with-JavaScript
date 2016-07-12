@@ -306,7 +306,7 @@ function codeIsbn(pisbn){
 /***** TELEPHONE NUMBERS *****/
 //GLOBAL VARIABLES / VARIABLES GLOBALES
 
-/*OThe object ' fixedlines ' contains regular expressions to validate strings with fixed telephone numbers in different countries /
+/*The object ' fixedlines ' contains regular expressions to validate strings with fixed telephone numbers in different countries /
 El objeto 'fixedlines' contiene expresiones regulares para validar cadenas con números de teléfono fijos de distintos paises*/
 var fixedlines = {};
 fixedlines.spain=/^\s*\(?(?:(00|\+)34)?\)?[-\/\s]?\d{2,3}[-\/\s]?(?:(\d{3}[-\/\s]?\d{3})|(\d{2}[-\/\s]?\d{2}[-\/\s]?\d{2}))\s*$/;
@@ -327,3 +327,35 @@ function fixedPhone(ptel,pcountry) {
 
 }
 
+/********** TEXT VALIDATIONS/VALIDACIONES DE TEXTO **********/
+
+/***** NAMES / NOMBRES *****/
+
+/*A name (first or/and surnames) can't use numbers or symbols to be validated
+Un nombre (de pila o/y apellidos) no puede contener números o símbolos*/
+//ARG: pname (string)
+function stringIsName(pname){
+	var reforbidden = /[\d\!\¡\?\¿@\/\\\^\*#\|\%\+\=\[\]\{\}\_\:;,\$]/;
+	/*If pname=[null,undefined,""] or has forbidden symbols return false
+	Si pname=[null,undefined,""] o contiene símbolos prohibidos devuelve false*/
+	if (!pname || reforbidden.test(pname)){
+		return false;
+	}
+	return true;
+}
+
+/***** EMAIL *****/
+
+/*This function ONLY validates basic email formats, doesn't check valid domains nor if the email really exists
+Esta función sólo valida el formato básico de emails, no chequea la valided de dominios o si el email existe*/
+//ARG: pemail (string)
+function stringIsEmail(pemail){
+	var reemail=/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/; //admits 4 characters domains
+	/*Transforms the string to lower case and removes spaces at the beguinning and end
+	Pasa la cadena a minúsculas y elimina espacios al principio y final*/
+	var aux=pemail.toLowerCase().trim();
+	if (reemail.test(aux)){
+		return true;
+	}
+	return false;
+}
