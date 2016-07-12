@@ -222,6 +222,87 @@ function validInt(pnum, psign) {
 	return out;
 }
 
+/***** ISBN *****/
+
+/*Validates an ISBN10 number / Valida un nro. ISBN10*/
+//ARG: pisbn (string or number)
+//OUTPUT: true if pisbn is an ISBN10 number, else false
+function codeIsbn10(pisbn){
+	var i, cod=0, aux;
+	/*Regexp for ISBN10 format / Regexp para formato ISBN10*/
+	var reisbn=/^\s*\d{9}[0-9xX]{1}\s*?/;
+	/*ISBN10 control digit can be an 'x' or 'X' so I make sure to convert it to 'x'
+	El dígito de control de ISBN10 puede ser 'x' o 'X' por lo que me aseguro de que sea 'x'*/
+	aux=pisbn.toLowerCase().trim(); //trim() removes spaces at the beguinning and end
+
+	/*Check if the argument has an ISBN10 format / comprueba si el argumento tiene formato ISBN10*/
+	if (reisbn.test(aux)){
+		/***** Calculation algorithm 10th check digit / Algoritmo de cálculo del 10º dígito de control *****/
+		for (i=0; i<(aux.length-1);i++){
+			cod = cod + Number(aux[i])*(i+1); //Number() used to ensure we are working with a number instead of a string
+		}
+		cod=cod%11;
+		if (cod==10){cod='x';}
+		/**********************************************************/
+
+		/*Check if the 10th digit is the correct control number
+		Compruebo si el 10º dígito es el el nro. de control correcto*/
+		if(cod==aux[aux.length-1]){
+			return true;
+		}
+	}
+	/*If pisbn hasn't the correct format or control digit validation retursn false
+	Si pisb no tiene el formato correcto o el nro de control válido devuelve false*/
+	return false;
+}
+
+/*Validates an ISBN13 number / Valida un nro. ISBN13*/
+//ARG: pisbn (string or number)
+//OUTPUT: true if pisbn is an ISBN13 number, else false
+function codeIsbn13(pisbn){
+	var j,cod=0;
+	var reisbn=/^\s*\d{13}\s*?/;
+	/*Regexp for ISBN10 format / Regexp para formato ISBN10*/
+	var aux=pisbn.trim(); //trim() removes spaces at the beguinning and end
+
+	/*Check if the argument has an ISBN13 format / comprueba si el argumento tiene formato ISBN13*/
+	if (reisbn.test(aux)){
+		/***** Calculation algorithm 130th check digit / Algoritmo de cálculo del 13º dígito de control *****/
+		for (j=1;j<=12;j=j+2){
+			cod=cod + Number(aux[j])*3 + Number(aux[j-1]);//Number() used to ensure we are working with a number instead of a string
+		}
+		cod=10-(cod%10);
+		/**********************************************************/
+
+		/*Check if the 13th digit is the correct control number
+		Compruebo si el 13º dígito es el el nro. de control correcto*/
+		if(cod==Number(pisbn[pisbn.length-1])){
+			return true;
+		}
+	}
+	/*If pisbn hasn't the correct format or control digit validation retursn false
+	Si pisb no tiene el formato correcto o el nro de control válido devuelve false*/
+	return false;
+}
+
+/*Validates an ISBN number (ISBN10 or ISBN13) / Valida un nro. ISBN (ISBN10 o ISBN13)*/
+//ARG: pisbn (string or number)
+//OUTPUT: true if pisbn is an ISBN number, else false
+function codeIsbn(pisbn){
+	var aux=pisbn.trim(); //trim() removes spaces at the beguinning and end
+
+	if (aux.length()===10){
+		return codeIsbn10(aux);
+	}
+	else if (aux.length()===13){
+		return codeIsbn13(aux);
+	}
+
+	/*If argument hasn't the right length return false
+	Si el argumento no tiene la longitud correcta devuelve false*/
+	return false;
+}
+
 /***** TELEPHONE NUMBERS *****/
 //GLOBAL VARIABLES / VARIABLES GLOBALES
 
