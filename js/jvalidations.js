@@ -303,6 +303,120 @@ function codeIsbn(pisbn){
 	return false;
 }
 
+/***** DATE NUMBERS / NÚMEROS DE FECHA *****/
+
+/*This function validates a string as a year with an 'A.D.' format (not the Js Date Object format)
+Esta función valida una cadena como año en formato 'A.D.' (no el formato del Objeto Date Js)*/
+//ARG: pyear (string)
+//OUTPUT: true if pyear is valid
+function stringIsYear(pyear){
+	var reyear=/^\s*[0-9]{1,4}(?:[AadDbB]\.[DdCc]\.)?\s*$/;
+	if (reyear.test(pyear)) {
+		return true;
+	}
+	return false;
+}
+
+/*This function validates a string which can have several date formats
+Esta función valida una cadena que puede tener distintos formatos de fecha*/
+//ARG: pdate (string) = dd[' '/-_]mm[' '/-_]yy or dd[''/-_]mm[' '/-_]yyyy; page (boolean) is optional, if true the date must be a birth date
+//OUTPUT: array=[true/false,empty value/wrong date,wrong day,wrong month,wrong year]
+function stringIsDate(pdate,page){
+	if (page===undefined){page=false;}
+	var aux=pdate.trim();
+	var arraux;
+	var out=[undefined,'','','',''];
+	var redate=/^[0-9]{1,2}[\s\/\\-\_]+[0-9]{1,2}[\s\/\\-\_]+[0-9]{4}?/;
+	/*If pdate is empty it is invalid / Si pdate está vacío, es inválido*/
+	if (aux===''){
+		out.push(false);
+		out.push(' Campo vacío');//out=[false,' Empty value']
+	}
+	/*If not, we have to continue checking / Si no, seguimos comprobando*/
+	else{
+		/*Suposing there are separators we extract day, month and year from the string
+		Suponiendo que hay separadores extraemos día, mes y año de la cadena*/
+		arraux=aux.split(findSep(aux));
+		var pday=arraux[0];
+		var pmonth=arraux[1];
+		var pyear=arraux[2];
+		console.log(pday +' '+pmonth+' '+pyear);
+
+		/*Actual date / fecha actual*/
+		var actualDate=new Date();
+		var ayear=actualDate.getFullYear();
+
+		/*pdate can have a valid format but still we have to check if it's a valid date
+		pdate puede tener un formato correcto pero debemos asegurar que es una fecha válida*/
+		if (redate.test(aux)){
+			console.log('expresion válida out[0] ', out[0]);
+			/*We create a Date object width datas from the argument
+			Creamos un objeto Date con los datos del argumento*/
+			var rdate=new Date(pyear,pmonth-1,pday);
+			var rday=rdate.getDate(); //Real day
+
+			out[3]='';
+
+			/*pday can have a valid format but not a valid value
+			pday puede tener un formato válido pero no ser válido*/
+			//(31/09/1998=01/10/1998, 31 != 01)
+			if (Number(pday)!==rday){
+				out[0]=false;
+				out[1]=' Fecha incorrecta:';
+				out[2]=' Día no válido (no corresponde al mes);';
+			}
+			/*If we look for a date of birth the year can't be higher than actual
+			Si buscamos una fecha de nacimiento el año no puede ser mayor que el actual*/
+			if (page && (Number(pyear)>ayear)){
+				out[0]=false;
+				out[1]=' Fecha incorrecta:';
+				out[4]=' Año no válido (mayor que '+ayear+')';
+			}
+			/*If format and datas are valid*/
+			if (out[0]===undefined) {
+				out[0]=true;
+				out.length=1;//erases every possible error messages
+			}
+
+		}
+		/*If pdate has no valid format we have to find what's wrong width it
+		Si pdate no tiene un formato válido tenemos que ver que falla*/
+		else {
+			console.log('expresion no válida');
+			/*pdate is not valid but, why? / pdate no es válido pero, ¿por qué?*/
+			out[0]=false;
+			/*There are no gaps between day, month and year
+			No hay separadores entre los datos*/
+			if (findSep(aux)===''){
+				out[1]=' Fecha incorrecta: introduzca día/mes/año';
+			}
+			/*If there are gaps, continue checking / si hay huecos continuamos chequeando*/
+			else {
+				/*If what must be the day is not a number or it's higher than 31
+				Si lo que suponemos el día no es un número o es mayor que 31*/
+				if ((isNaN(pday)) || (Number(pday)>31)){
+					out[1]=' Fecha incorrecta:';
+					out[2]=' Día no válido (1 a 31);';
+				}
+				/*If what must be the month is not a number or it's higher than 12
+				Si lo que suponemos el mes no es un número o es mayor que 12*/
+				if ((isNaN(pmonth)) || (Number(pmonth)>12)){
+					out[1]=' Fecha incorrecta:';
+					out[3]=' Mes no válido (1 a 12);';
+				}
+				/*If what must be the year is not a number or, if we're looking for a birth date, it's higher than actual year
+				Si lo que suponemos el mes no es un número o es mayor que 12*/
+				if ((isNaN(pyear)) || (Number(pyear)>ayear && page)){
+					out[1]=' Fecha incorrecta:';
+					/*(page ? exp1 : '') if page=true out[2]=" Not valid year (higher than <actual year>)" else out[2]=" Not valid year"*/
+					out[4]=' Año no válido' + (page ? ' (mayor que '+ayear+')' : '');
+				}
+			}
+		}
+	}
+	return out;
+}
+
 /***** TELEPHONE NUMBERS *****/
 //GLOBAL VARIABLES / VARIABLES GLOBALES
 
@@ -352,6 +466,39 @@ function fixedPhone(ptel,pcountry) {
 }
 
 /********** TEXT VALIDATIONS/VALIDACIONES DE TEXTO **********/
+
+/***** STRING TOOLS / HERRAMIENTAS PARA STRINGS *****/
+
+/*This function cleans a string that has been given as an argument, leaving only text characters, without numbers
+or symbols. In this case text characters are from spanish language.
+Esta función limpia una cadena pasada como argumento dejando sólo caracteres de texto, sin números o símbolos.
+En este caso los caracteres pertenecen al español*/
+//ARG: pstring (string)
+function onlyText(pstring){
+	var retext=/[a-zñA-ZÑáéíóúÁÉÍÓÚ\s]/;//reg exp to check each character from the pstring
+	var i,aux=pstring;
+	/*This will cover the entire string, checking every character and eliminating the incorrect ones.
+	Esto recorrerá toda la cadena, comprobando todos los caracteres y eliminando los incorrectos*/
+	for (i=0;i<aux.length;i++){
+		if (!retext.test(aux[i])){//aux="abcd$efg%" i=4 aux[i]="$" aux.length=9 ... aux="abcdefg$" i=7 aux[i]="%" aux.length=8
+			aux=aux.replace(aux[i],'');//erase first char=aux[i]="$" aux="abcdefg%" ... erase first "%" aux="abcdefg"
+		}
+	}
+	return aux;
+}
+
+/*This function returns the symbol which has been used for gaps in a string. We supose that the string has no other symbols
+Esta función devuelve el símbolo utilizado como separador en una cadena. Suponemos que la cadena no tiene otros símbolos*/
+//ARG: pstring (string)
+//OUTPUT: string, "12/15/2016" -> "/"
+function findSep(pstring){
+	var resep=/[\s\/\\-\_]/;
+	var i=pstring.search(resep);
+	if (i===-1){
+		return '';
+	}
+	return pstring[i];
+}
 
 /***** NAMES / NOMBRES *****/
 
