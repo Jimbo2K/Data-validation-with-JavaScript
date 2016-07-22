@@ -9,3 +9,11 @@ h1 {
 h1 em {
 	color: #555;
 }
+
+.page-hidden {
+	display: none;
+}
+
+.page-show {
+	display: initial;
+}
