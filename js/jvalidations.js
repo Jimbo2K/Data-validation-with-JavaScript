@@ -320,11 +320,35 @@ var languages = [/^es/,/^fr/,/^en/,/^it/];
 
 function fixedPhone(ptel,pcountry) {
 	var langval = pcountry;
+	var relangval;
+	/*If argument pcountry is not used langval will be chosed from the browser language
+	Si no se utiliza el argumento pcountry se toma el lenguaje del navegador*/
 	var brwlang = navigator.languages ? navigator.languages[0] : (navigator.language || navigator.userLanguage);
 	if (!pcountry) {
-		
+		for (var i=0; i<languages.length(); i++){
+			if (languages[i].test(brwlang)){
+				langval=languages[i].substr(2,2);
+			}
+		}
 	}
-
+	switch (langval) {
+		case es:
+			relangval=fixedlines.spain;
+			break;
+		case fr:
+			relangval=fixedlines.france;
+			break;
+		case en:
+			relangval=fixedlines.ireland;
+			break;
+		case it:
+			relangval=fixedlines.italy;
+			break;
+		default:
+			relangval=fixedlines.spain;
+			break;
+	}
+	
 }
 
 /********** TEXT VALIDATIONS/VALIDACIONES DE TEXTO **********/
