@@ -5,7 +5,6 @@
 	<meta charset="UTF-8">
 	<script src="js/jvalidations.js"></script>
 	<link rel="stylesheet" href="css/estilo.css">
-	<script src="js/ejemplo.js"></script>
 </head>
 <body>
 	<h1>Ejemplo HTML de uso de la librería jvalidations.js</h1>
@@ -18,16 +17,16 @@
 		<div class="bloque">
 			<h3>Validación de enteros</h3>
 			<ul>
-				<li><button type="button" id="bot1" onclick="int1();">validInt1</button><span id="out1"></span></li>
-				<li><button type="button" id="bot2" onclick="int2();">stringIsInt</button><span id="out2"></span></li>
-				<li><button type="button" id="bot3" onclick="int3();">validPInt</button><span id="out3"></span></li>
-				<li><button type="button" id="bot4" onclick="int4();">stringIsPInt</button><span id="out4"></span></li>
-				<li><button type="button" id="bot5" onclick="int5();">validNInt</button><span id="out5"></span></li>
-				<li><button type="button" id="bot6" onclick="int6();">stringIsNInt</button><span id="out6"></span></li>
+				<li><button type="button" id="botint1" >validInt1</button><span id="out1"></span></li>
+				<li><button type="button" id="botint2" >stringIsInt</button><span id="out2"></span></li>
+				<li><button type="button" id="botint3" >validPInt</button><span id="out3"></span></li>
+				<li><button type="button" id="botint4" >stringIsPInt</button><span id="out4"></span></li>
+				<li><button type="button" id="botint5" >validNInt</button><span id="out5"></span></li>
+				<li><button type="button" id="botint6" >stringIsNInt</button><span id="out6"></span></li>
 				<li>
 					<input type="text" name="sign" id="sign" maxlength="2" size="2" form="formulario">
 					<label for="sign">Argumento opcional de validInt</label><br>
-					<button type="button" id="bot7" onclick="int7();">validInt</button>
+					<button type="button" id="botint7" ">validInt</button>
 					<span id="out7"></span>
 				</li>
 			</ul>
@@ -35,20 +34,30 @@
 		<div class="bloque">
 			<h3>Validación de reales</h3>
 			<ul>
-				<li><button type="button" id="bot1" onclick="float1();">validFloat1</button><span id="out8"></span></li>
-				<li><button type="button" id="bot2" onclick="float2();">stringIsFloat</button><span id="out9"></span></li>
-				<li><button type="button" id="bot3" onclick="float3();">validPFloat</button><span id="out10"></span></li>
-				<li><button type="button" id="bot4" onclick="float4();">stringIsPFloat</button><span id="out11"></span></li>
-				<li><button type="button" id="bot5" onclick="float5();">validNFloat</button><span id="out12"></span></li>
-				<li><button type="button" id="bot6" onclick="float6();">stringIsNFloat</button><span id="out13"></span></li>
+				<li><button type="button" id="botfloat1" >validFloat1</button><span id="out8"></span></li>
+				<li><button type="button" id="botfloat2" >stringIsFloat</button><span id="out9"></span></li>
+				<li><button type="button" id="botfloat3" >validPFloat</button><span id="out10"></span></li>
+				<li><button type="button" id="botfloat4" >stringIsPFloat</button><span id="out11"></span></li>
+				<li><button type="button" id="botfloat5" >validNFloat</button><span id="out12"></span></li>
+				<li><button type="button" id="botfloat6" >stringIsNFloat</button><span id="out13"></span></li>
 				<li>
 					<input type="text" name="sign2" id="sign2" maxlength="2" size="2" form="formulario">
 					<label for="sign">Argumento opcional de validFloat</label><br>
-					<button type="button" id="bot7" onclick="float7();">validFloat</button>
+					<button type="button" id="botfloat7" >validFloat</button>
 					<span id="out14"></span>
 				</li>
 			</ul>
 		</div>
+
+		<div class="bloque">
+			<h3>Validación de fechas</h3>
+			<ul>
+				<li>
+					<button></button>
+				</li>
+			</ul>
+		</div>
 	</div>
+	<script src="js/ejemplo.js"></script>
 </body>
 </html>
