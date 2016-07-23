@@ -35,7 +35,7 @@ Las validaciones se pueden realizar empleando sólo código JavaScript, aunque s
 
 Como no todo el mundo está familiarizado con el uso de expresiones regulares, he intentado hacer dos versiones para cada función de validación, con y sin mezcla de expresiones regulares y js.
 
-You can find more about regular expressions in this link from [MDN](https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Regular_Expressions "Mozilla Developer Network")
+Puedes encontrar más información sobre expresiones regulares en este nelace a [MDN](https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Regular_Expressions "Mozilla Developer Network")
 
 ##Revs.
 **30/06/2016** Un ejemplo HTML añadido para probar las funciones de jvalidations.js. El ejemplo incluye un archivo HTML (ejemplo.html), una hoja de estilo CSS (estilo.css) y un archivo JS (ejemplo.js) para los eventos que desencadenan las validaciones.
