@@ -2,14 +2,17 @@ body {
 	font-family: verdana, arial, sans-serif;
 }
 
-h1 {
-	text-align: center;
+header {
 	background-color: #333399;
-	color: white;
+	max-height: 3em;
+	padding-top: 5px;
 }
 
-h1 em {
-	color: #aaa;
+h1 {
+	text-align: center;
+	color: white;
+	margin: 0;
+	padding: 0 0 8px 0;
 }
 
 h1 button {
@@ -37,4 +40,63 @@ h1 button {
 
 h2 {
 	text-align: center;
+	color: #228;
+}
+
+h3 {
+	text-decoration: underline;
+	margin-top: 2em;
+}
+
+@media screen and (max-width: 1280px) and (min-width: 992px) {
+
+	h1 {
+		font-size: 1.4em;
+		text-align: left;
+		margin-left: 1em;
+	}
+
+	h1 button {
+		margin-right: 1em;
+		margin-top: .7em;
+	}
+}
+
+@media screen and (max-width: 991px) and (min-width: 769px) {
+
+	h1 {
+		font-size: 1.1em;
+		text-align: left;
+		margin-left: .7em;
+	}
+
+	h1 button {
+		margin-right: .2em;
+		margin-top: .2em;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	header {
+		max-height: 8em;
+	}
+
+	h1 {
+		font-size: 1em;
+		text-align: left;
+		margin-left: .7em;
+	}
+
+	h1 button {
+		margin-right: .2em;
+		margin-top: .2em;
+	}
+
+	h2, h3 {
+		font-size: 1em;
+	}
+	
+	p {
+		font-size: .8em;
+	}
 }

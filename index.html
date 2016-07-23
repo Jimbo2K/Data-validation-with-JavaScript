@@ -1,22 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
 	<title>JavaScript validations / Validaciones JavaScript</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="Data validations width JavaScript">
+	<meta name="author" content="Pablo Garrido Roa">
+	<meta name="keywords" content="JavaScript, validation, form, input, text, number">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="css/page.css">
+	<link rel="shortcut icon" href="favicon.ico"/>
 </head>
 <body>
-	<h1>Data validation with JavaScript / <em>Validación de datos con JavaScript</em> <button id="btnlang">English</button></h1>
+	<header>
+		<h1><span id="htitle">Data validation with JavaScript</span><button id="btnlang" title="Cambia a español">English</button></h1>
+	</header>
+
 	<div id="eng-page" class="page-show">
 		<h2>Functions with js and regular expressions for data validation (especially for forms)</h2>
 		<p>Although HTML 5 implements its own formulary validation system, its performance depends largely on the browser used. So maybe it won't work in every browser.</p>
 		<p>Also in some cases it requires specific validations that HTML 5 can not performed (eg: the date format varies by country and it is important to adapt it for improving accessibility).</p>
+		<p>Before continuing you must notice than <strong>data validation, especially for forms, must be twofold, browser's side and especially server's side</strong>. The code used in this repository corresponds only to the browser's side.</p>
+		<h3>Using JavaScript</h3>
+		<p>The code you'll find in this repository is just JavaScript, there are no dependencies with other libraries like JQuery or similars.</p>
+		<p>This feature along with the structure of the code itself, a collection of independent functions, allows it to be easily integrated in other projects.</p>
+		<h3>Using regular expressions</h3>
+		<p>Validations can be performed using only JavaScript code, even if mixed with regular expressions is greatly minimized.</p>
+		<p>As not everyone is acquainted with using regular expressions, I've tried to make two versions for each validation function, with and without mixture of js and regular expressions.</p>
+		<p>You can find more about regular expressions in this link from <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions" title="Mozilla Developer Network" target="_blank">MDN</a>.</p>
 	</div>
 
 	<div id="spn-page" class="page-hidden">
+		<p></p>
 		<h2>Funciones con js y expresiones regulares para validación de datos (especialmente formularios)</h2>
 		<p>Aunque HTML 5 implementa su propio sistema de validación para formularios, su funcionamiento depende en gran medida del navegador que utilice el formulario pudiendo funcionar o no.</p>
 		<p>Además en algunos casos será preciso realizar validaciones específicas que HTML 5 no puede llevar a cabo (por ejemplo: el formato de fecha varía según el país y es importante adaptarlo por accesibilidad).</p>
+		<p>Antes de contniuar debes tener en cuenta que <strong>la validación de datos, especialmente para formularios, debe ser doble, del lado del navegador y especialmente en el servidor</strong>. El código de este repositorio corresponde sólo al lado del navegador.</p>
+		<h3>Uso de JavaScript</h3>
+		<p>El código que encontrarás en este repositorio es sólo JavaScript, sin dependencias con otras librerias como JQuery o similares.</p>
+		<p>Esta característica junto a la estructura del propio código, una colección de funciones independientes, permite que pueda ser integrado de manera sencilla en otros proyectos.</p>
+		<h3>Uso de expresiones regulares</h3>
+		<p>Las validaciones se pueden realizar empleando sólo código JavaScript, aunque si se mezcla con expresiones regulares se puede minimizar en gran medida.</p>
+		<p>Como no todo el mundo está familiarizado con el uso de expresiones regulares, he intentado hacer dos versiones para cada función de validación, con y sin mezcla de expresiones regulares y js.</p>
+		<p>You can find more about regular expressions in this link from <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Regular_Expressions" title="Mozilla Developer Network" target="_blank">MDN</a>.</p>
 	</div>
 	<script src="js/page.js"></script>
 </body>
