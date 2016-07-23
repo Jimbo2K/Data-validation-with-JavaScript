@@ -16,7 +16,7 @@ function validFloat1(pnum) {
 	aux1=isNaN(pnum);
 	//pnum is ' ' or ''? / ¿pnum es ' ' ó ''?
 	//isNaN() considers '' and ' ' as numbers / isNaN() considera '' y ' ' como números
-	aux2=Boolean(aux1===' ' || aux1==='');
+	aux2=Boolean(pnum===' ' || pnum==='');
 	/*if one of the 2 conditions/vars are true, pnum isn't a VALID number /
 	  si una de las 2 condiciones/variables es cierta, pnum no es un número válido*/
 	if (aux1 || aux2) {out=false;}
@@ -48,7 +48,7 @@ function validPFloat(pnum) {
 	aux1=isNaN(pnum);
 	//pnum is ' ' or ''? / ¿pnum es ' ' ó ''?
 	//isNaN() considers '' and ' ' as numbers / isNaN() considera '' y ' ' como números
-	aux2=Boolean(aux1===' ' || aux1==='');
+	aux2=Boolean(pnum===' ' || pnum==='');
 	/*If pnum is a number, is it negative?. If pnum is not a number it doesn't matters /
 	Si pnum es un número, ¿es negativo?. Si no es un número da igual*/
 	aux3=(!aux2 ? (pnum < 0) : true );
@@ -79,7 +79,7 @@ function validNFloat(pnum) {
 	aux1=isNaN(pnum);
 	//pnum is ' ' or ''? / ¿pnum es ' ' ó ''?
 	//isNaN() considers '' and ' ' as numbers / isNaN() considera '' y ' ' como números
-	aux2=Boolean(aux1===' ' || aux1==='');
+	aux2=Boolean(pnum===' ' || pnum==='');
 	/*If pnum is a number, is it positive?. If pnum is not a number it doesn't matters /
 	Si pnum es un número, ¿es positivo?. Si no es un número da igual*/
 	aux3=(!aux2 ? (pnum > 0) : true );

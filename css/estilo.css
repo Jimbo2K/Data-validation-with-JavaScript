@@ -11,7 +11,7 @@ ul {
 	justify-content: space-around;
 }
 .bloque {
-	width: 30%;
+	min-width: 400px;
 	border: 1px solid #999;
 }
 
@@ -27,4 +27,11 @@ ul {
 button {
 	margin: .3em;
 	width: 10em;
+}
+label {
+	font-size: .8em;
+}
+
+.contenedor input{
+	margin: .4em .2em 0 .8em;
 }

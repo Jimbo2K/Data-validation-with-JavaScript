@@ -51,9 +51,18 @@
 
 		<div class="bloque">
 			<h3>Validación de fechas</h3>
+			<input type="radio" name="dateoption" value="opcion1" checked>
+			<label for="value2" form="formulario">Escriba una fecha en el siguiente campo:</label><br>
+			<input type="text" name="value2" id="value2" maxlength="10" size="10" oninput="borraSpan();" form="formulario" placeholder="dd/mm/aaaa"><br>
+			<input type="radio" name="dateoption" value="opcion2">
+			<label for="value3" form="formulario">Escriba una fecha utilizando los siguientes campos:</label><br>
+			<input type="text" name="value3_1" id="value3_1" maxlength="2" size="2" oninput="borraSpan();" form="formulario" placeholder="dd">/
+			<input type="text" name="value3_2" id="value3_2" maxlength="2" size="2" oninput="borraSpan();" form="formulario" placeholder="mm">/
+			<input type="text" name="value3_3" id="value3_3" maxlength="4" size="4" oninput="borraSpan();" form="formulario" placeholder="aaaa"><br>
+			<input type="checkbox" name="edad" id="edad" form="formulario"><label for="edad">Marca esta opción si se trata de una fecha de nacimiento</label>
 			<ul>
 				<li>
-					<button></button>
+					<button type="button" id="botdate1">stringIsDate</button>
 				</li>
 			</ul>
 		</div>

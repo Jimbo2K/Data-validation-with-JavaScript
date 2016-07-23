@@ -17,8 +17,11 @@ As not everyone is acquainted with using regular expressions, I've tried to make
 
 You can find more about regular expressions in this link from [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions "Mozilla Developer Network")
 
-##Revs.
-**30/06/2016** An html example added to check the validation functions from jvalidations.js. The example includes an HTML file (ejemplo.html), an CSS style (estilo.css) and a JS file (ejemplo.js) for the events that trigger validations.
+### EXAMPLE (in development)
+
+I've created an HTML example (ejemplo.html) to test the functions in the library.
+I will add more tests as I go creating new functions in jvalidations.js.
+**Note:** the example is written in spanish though it's easy to understand the tests.
 ***
 ##Funciones con js y expresiones regulares para validación de datos (especialmente formularios)
 **Lo primero:** La validación de datos, sobre todo para formularios, debe ser doble, del lado del navegador y sobre todo del servidor. El código empleado en este repositorio corresponde **sólo del lado del navegador**.
@@ -37,5 +40,8 @@ Como no todo el mundo está familiarizado con el uso de expresiones regulares, h
 
 Puedes encontrar más información sobre expresiones regulares en este nelace a [MDN](https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Regular_Expressions "Mozilla Developer Network")
 
-##Revs.
-**30/06/2016** Un ejemplo HTML añadido para probar las funciones de jvalidations.js. El ejemplo incluye un archivo HTML (ejemplo.html), una hoja de estilo CSS (estilo.css) y un archivo JS (ejemplo.js) para los eventos que desencadenan las validaciones.
+### EJEMPLO (en desarrollo)
+
+He creado un ejemplo en HTML (ejemplo.html) para probar las funciones de la librería.
+Iré añadiendo más pruebas según vaya creando nuevas funciones.
+
