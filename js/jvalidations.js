@@ -111,8 +111,8 @@ function validFloat(pnum, psign) {
 	/*if psign=1 we look for positive numbers /
 	si psign=1 buscamos números positivos*/
 	if (psign==1){rexp=/^\s*(?:\d+\.?\d*)\s*$/;} //Use psign==1 instead of psign===1, because 1 is is not strictly equal to to '1'
-	/*if psign=-11 we look for negative numbers /
-	si psign=-11 buscamos números negativos*/
+	/*if psign=-1 we look for negative numbers /
+	si psign=-1 buscamos números negativos*/
 	else if(psign==-1){rexp=/^\s*(?:-\d+\.?\d*)\s*$/;} //Use psign==-1 instead of psign===-1, because 1 is is not strictly equal to to '1'
 	var out=Boolean(rexp.exec(pnum));
 	return out;
@@ -310,7 +310,7 @@ Esta función valida una cadena como año en formato 'A.D.' (no el formato del O
 //ARG: pyear (string)
 //OUTPUT: true if pyear is valid
 function stringIsYear(pyear){
-	var reyear=/^\s*[0-9]{1,4}(?:[AadDbB]\.[DdCc]\.)?\s*$/;
+	var reyear=/^\s*[0-9]{1,4}\s?(?:[AadDbB]\.[DdCc]\.)?\s*$/;
 	if (reyear.test(pyear)) {
 		return true;
 	}
@@ -319,14 +319,14 @@ function stringIsYear(pyear){
 
 /*This function validates a string which can have several date formats
 Esta función valida una cadena que puede tener distintos formatos de fecha*/
-//ARG: pdate (string) = dd[' '/-_]mm[' '/-_]yy or dd[''/-_]mm[' '/-_]yyyy; page (boolean) is optional, if true the date must be a birth date
+//ARG: pdate (string) = dd[' '/-_]mm[' '/-_]yyyy; page (boolean) is optional, if true the date must be a birth date
 //OUTPUT: array=[true/false,empty value/wrong date,wrong day,wrong month,wrong year]
 function stringIsDate(pdate,page){
 	if (page===undefined){page=false;}
 	var aux=pdate.trim();
 	var arraux;
 	var out=[undefined,'','','',''];
-	var redate=/^[0-9]{1,2}[\s\/\\-\_]+[0-9]{1,2}[\s\/\\-\_]+[0-9]{4}?/;
+	var redate=/^[0-9]{1,2}[\s\/\\-\_\.]+[0-9]{1,2}[\s\/\\-\_\.]+[0-9]{4}?/;
 	/*If pdate is empty it is invalid / Si pdate está vacío, es inválido*/
 	if (aux===''){
 		out[0]=false;
@@ -340,7 +340,6 @@ function stringIsDate(pdate,page){
 		var pday=arraux[0];
 		var pmonth=arraux[1];
 		var pyear=arraux[2];
-		console.log(pday +' '+pmonth+' '+pyear);
 
 		/*Actual date / fecha actual*/
 		var actualDate=new Date();
@@ -349,7 +348,6 @@ function stringIsDate(pdate,page){
 		/*pdate can have a valid format but still we have to check if it's a valid date
 		pdate puede tener un formato correcto pero debemos asegurar que es una fecha válida*/
 		if (redate.test(aux)){
-			console.log('expresion válida out[0] ', out[0]);
 			/*We create a Date object width datas from the argument
 			Creamos un objeto Date con los datos del argumento*/
 			var rdate=new Date(pyear,pmonth-1,pday);
@@ -382,7 +380,6 @@ function stringIsDate(pdate,page){
 		/*If pdate has no valid format we have to find what's wrong width it
 		Si pdate no tiene un formato válido tenemos que ver que falla*/
 		else {
-			console.log('expresion no válida');
 			/*pdate is not valid but, why? / pdate no es válido pero, ¿por qué?*/
 			out[0]=false;
 			/*If the pdate argument is taken from 3 different inputs, probably the string won't be empty because several separators have been added,
@@ -484,7 +481,7 @@ Esta función limpia una cadena pasada como argumento dejando sólo caracteres d
 En este caso los caracteres pertenecen al español*/
 //ARG: pstring (string)
 function onlyText(pstring){
-	var retext=/[a-zñA-ZÑáéíóúÁÉÍÓÚ\s]/;//reg exp to check each character from the pstring
+	var retext=/[a-zñA-ZÑáéíóúÁÉÍÓÚüÜ\s]/;//reg exp to check each character from the pstring
 	var i,aux=pstring;
 	/*This will cover the entire string, checking every character and eliminating the incorrect ones.
 	Esto recorrerá toda la cadena, comprobando todos los caracteres y eliminando los incorrectos*/
