@@ -329,8 +329,8 @@ function stringIsDate(pdate,page){
 	var redate=/^[0-9]{1,2}[\s\/\\-\_]+[0-9]{1,2}[\s\/\\-\_]+[0-9]{4}?/;
 	/*If pdate is empty it is invalid / Si pdate está vacío, es inválido*/
 	if (aux===''){
-		out.push(false);
-		out.push(' Campo vacío');//out=[false,' Empty value']
+		out[0]=false;
+		out[1]='-Campo vacío';//out=[false,' Empty value']
 	}
 	/*If not, we have to continue checking / Si no, seguimos comprobando*/
 	else{
@@ -362,15 +362,15 @@ function stringIsDate(pdate,page){
 			//(31/09/1998=01/10/1998, 31 != 01)
 			if (Number(pday)!==rday){
 				out[0]=false;
-				out[1]=' Fecha incorrecta:';
-				out[2]=' Día no válido (no corresponde al mes);';
+				out[1]='-Fecha incorrecta:';
+				out[2]='-Día no válido (no corresponde al mes);';
 			}
 			/*If we look for a date of birth the year can't be higher than actual
 			Si buscamos una fecha de nacimiento el año no puede ser mayor que el actual*/
 			if (page && (Number(pyear)>ayear)){
 				out[0]=false;
-				out[1]=' Fecha incorrecta:';
-				out[4]=' Año no válido (mayor que '+ayear+')';
+				out[1]='-Fecha incorrecta:';
+				out[4]='-Año no válido (mayor que '+ayear+')';
 			}
 			/*If format and datas are valid*/
 			if (out[0]===undefined) {
@@ -385,31 +385,35 @@ function stringIsDate(pdate,page){
 			console.log('expresion no válida');
 			/*pdate is not valid but, why? / pdate no es válido pero, ¿por qué?*/
 			out[0]=false;
+			/*If the pdate argument is taken from 3 different inputs, probably the string won't be empty because several separators have been added,
+			but the date `must be empty.
+			Si pdate se ha obtenido de 3 inputs, probablemente la cadena no esté vacía porque se han añadido separadores pero la fecha estará vacía*/
+			out[1]='-Fecha vacía';
 			/*There are no gaps between day, month and year
 			No hay separadores entre los datos*/
 			if (findSep(aux)===''){
-				out[1]=' Fecha incorrecta: introduzca día/mes/año';
+				out[1]='-Fecha incorrecta: introduzca día/mes/año separados';
 			}
 			/*If there are gaps, continue checking / si hay huecos continuamos chequeando*/
 			else {
 				/*If what must be the day is not a number or it's higher than 31
 				Si lo que suponemos el día no es un número o es mayor que 31*/
 				if ((isNaN(pday)) || (Number(pday)>31)){
-					out[1]=' Fecha incorrecta:';
-					out[2]=' Día no válido (1 a 31);';
+					out[1]='-Fecha incorrecta:';
+					out[2]='-Día no válido (1 a 31);';
 				}
 				/*If what must be the month is not a number or it's higher than 12
 				Si lo que suponemos el mes no es un número o es mayor que 12*/
 				if ((isNaN(pmonth)) || (Number(pmonth)>12)){
-					out[1]=' Fecha incorrecta:';
-					out[3]=' Mes no válido (1 a 12);';
+					out[1]='-Fecha incorrecta:';
+					out[3]='-Mes no válido (1 a 12);';
 				}
 				/*If what must be the year is not a number or, if we're looking for a birth date, it's higher than actual year
 				Si lo que suponemos el mes no es un número o es mayor que 12*/
 				if ((isNaN(pyear)) || (Number(pyear)>ayear && page)){
-					out[1]=' Fecha incorrecta:';
+					out[1]='-Fecha incorrecta:';
 					/*(page ? exp1 : '') if page=true out[2]=" Not valid year (higher than <actual year>)" else out[2]=" Not valid year"*/
-					out[4]=' Año no válido' + (page ? ' (mayor que '+ayear+')' : '');
+					out[4]='-Año no válido' + (page ? ' (mayor que '+ayear+')' : '');
 				}
 			}
 		}
@@ -418,51 +422,56 @@ function stringIsDate(pdate,page){
 }
 
 /***** TELEPHONE NUMBERS *****/
-//GLOBAL VARIABLES / VARIABLES GLOBALES
 
-/*The object ' fixedlines ' contains regular expressions to validate strings with fixed telephone numbers in different countries /
-El objeto 'fixedlines' contiene expresiones regulares para validar cadenas con números de teléfono fijos de distintos paises*/
-var fixedlines = {};
-fixedlines.spain=/^\s*\(?(?:(00|\+)34)?\)?[-\/\s]?\d{2,3}[-\/\s]?(?:(\d{3}[-\/\s]?\d{3})|(\d{2}[-\/\s]?\d{2}[-\/\s]?\d{2}))\s*$/;
-fixedlines.france=/^\s*\(?(?:(00|\+)33)?\)?[-\/\s]?0?\d[-\/\s]?\d{2}[-\/\s]?\d{2}[-\/\s]?\d{2}[-\/\s]?\d{2}\s*$/;
-fixedlines.ireland=/^\s*\(?(?:(0|\+)353)?\)?[-\/\s]?0\d{1,5}[-\/\s]?(?:(\d{3}[-\/\s]?\d{3})|(\d{4,6}))\s*$/;
-fixedlines.italy=/^\s*\(?(?:(00|\+)39)?\)?[-\/\s]?06[-\/\s]?\d{8}\s*$/;
-
-var languages = [/^es/,/^fr/,/^en/,/^it/];
-
-//idiomadel navegador - navigator.languages ? navigator.languages[0] : (navigator.language || navigator.userLanguage)
-
+/*This function checks if a string is a valid fixed telphone number from an european country (actually it works for Spain, France, Ireland and
+Italy). If the country is not given as an argument, the code check the language from the browser to chose it. If the chosen country is not available
+the function will use Spain as default.
+Esta función chequea si una cadena es un teléfono fijo valido de un pais europeo (actualmente soporta España, Francia, Irlanda e Italia). Si no
+se le pasa el pais como argumento, lo toma del lenguaje del navegador. Si el país elegido no está disponible se utilizará España por defecto.*/
+//ARG: ptel (string); pcountry (string) is optional and must be one of the languaje identifications code (http://www.metamodpro.com/browser-language-codes)
 function fixedPhone(ptel,pcountry) {
+	/*The object ' fixedlines ' contains regular expressions to validate strings with fixed telephone numbers in different countries /
+	El objeto 'fixedlines' contiene expresiones regulares para validar cadenas con números de teléfono fijos de distintos paises*/
+	var fixedlines = {};
+	fixedlines.spain=/^\s*\(?(?:(00|\+)34)?\)?[-\/\s]?\d{2,3}[-\/\s]?(?:(\d{3}[-\/\s]?\d{3})|(\d{2}[-\/\s]?\d{2}[-\/\s]?\d{2}))\s*$/;
+	fixedlines.france=/^\s*\(?(?:(00|\+)33)?\)?[-\/\s]?0?\d[-\/\s]?\d{2}[-\/\s]?\d{2}[-\/\s]?\d{2}[-\/\s]?\d{2}\s*$/;
+	fixedlines.ireland=/^\s*\(?(?:(0|\+)353)?\)?[-\/\s]?0\d{1,5}[-\/\s]?(?:(\d{3}[-\/\s]?\d{3})|(\d{4,6}))\s*$/;
+	fixedlines.italy=/^\s*\(?(?:(00|\+)39)?\)?[-\/\s]?06[-\/\s]?\d{8}\s*$/;
+	/*Available countries / paises disponibles*/
+	var languages = ['es','fr-fr','ie','it']; //en-gb Great Britain / de-de Germany / pt Potuguese ...
+
 	var langval = pcountry;
 	var relangval;
 	/*If argument pcountry is not used langval will be chosed from the browser language
 	Si no se utiliza el argumento pcountry se toma el lenguaje del navegador*/
 	var brwlang = navigator.languages ? navigator.languages[0] : (navigator.language || navigator.userLanguage);
-	if (!pcountry) {
-		for (var i=0; i<languages.length(); i++){
-			if (languages[i].test(brwlang)){
-				langval=languages[i].substr(2,2);
+	brwlang=brwlang.toLowerCase();
+	if (pcountry===undefined || pcountry==='' ) {
+		for (var i=0; i<languages.length; i++){
+			var langcheck= new RegExp(languages[i]);
+			if (langcheck.test(brwlang)){
+				langval=languages[i];
 			}
 		}
 	}
 	switch (langval) {
-		case es:
+		case 'es':
 			relangval=fixedlines.spain;
 			break;
-		case fr:
+		case 'fr-fr':
 			relangval=fixedlines.france;
 			break;
-		case en:
+		case 'ie':
 			relangval=fixedlines.ireland;
 			break;
-		case it:
+		case 'it':
 			relangval=fixedlines.italy;
 			break;
 		default:
 			relangval=fixedlines.spain;
 			break;
 	}
-	
+	return relangval.test(ptel);
 }
 
 /********** TEXT VALIDATIONS/VALIDACIONES DE TEXTO **********/

@@ -1,3 +1,7 @@
+/*****************************************/
+/*********** Events / eventos ************/
+/*****************************************/
+
 /*When event mouse down on the body is detected eventClick is called
 Cuando se detecta el vento de botón de ratón pulsado sobre body, se llama a eventClick*/
 document.body.onmousedown=function(){
@@ -35,13 +39,32 @@ function eventClick(e){
   }
 }
 
+document.getElementById('radio1').onclick=function() {
+	this.setAttribute('checked', true);
+	document.getElementById('radio2').setAttribute('checked', false);
+};
+
+document.getElementById('radio2').onclick=function() {
+	this.setAttribute('checked', true);
+	document.getElementById('radio1').setAttribute('checked', false);
+};
+
+/*****************************************/
+/***** Aux functions / Funciones aux *****/
+/*****************************************/
+
 function borraSpan() {
 	var salidas=document.getElementsByTagName('SPAN');
 	var i;
 	for (i in salidas) {
 		salidas[i].innerHTML='';
 	}
+	document.getElementById('datemens').value='';
 }
+
+/*****************************************/
+/**** Test functions / funciones test ****/
+/*****************************************/
 
 function int1(){
 	var campo=document.getElementById('value1');
@@ -127,4 +150,34 @@ function float7(){
 	var salida=document.getElementById('out14');
 	var arg=document.getElementById('sign2');
 	salida.innerHTML=validFloat(campo.value,arg.value);
+}
+
+function date1(){
+	var chkopt=document.getElementById('radio1').checked;
+	var cadenaFecha;
+	var edad;
+	var salida;
+	var i;
+	/*Según la opción elegida se obtiene la fecha de uno o tres campos*/
+	if (chkopt){
+		cadenaFecha=document.getElementById('value2').value;
+	} else {
+		cadenaFecha=document.getElementById('value3_1').value+'/'+document.getElementById('value3_2').value+'/'+document.getElementById('value3_3').value;
+	}
+	/*Según se seleccione o no el checkbox la fecha corresponde o no a una edad (fecha de nacimiento)*/
+	edad=document.getElementById('edad').checked;
+	salida=stringIsDate(cadenaFecha,edad);
+	document.getElementById('datemens').value='';
+	for (i in salida){
+		if (salida[i]!=='') {//No escribo los mensajes vacíos
+			document.getElementById('datemens').value+=salida[i] + '\n';
+		}
+	}
+}
+
+function phone1(){
+	var numerotel=document.getElementById('telefono').value;
+	var pais=document.getElementById('pais').value;
+	var salida=document.getElementById('out15');
+	salida.innerHTML=fixedPhone(numerotel,pais);
 }

@@ -8,11 +8,15 @@ ul {
 
 .contenedor {
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: space-around;
 }
 .bloque {
+	max-width: 800px;
 	min-width: 400px;
+	min-height: 300px;
 	border: 1px solid #999;
+	margin-top: .5em;
 }
 
 .bloque h3 {
@@ -24,14 +28,19 @@ ul {
 	padding-left: 2em;
 }
 
-button {
+.bloque button {
 	margin: .3em;
 	width: 10em;
 }
-label {
+.bloque label, .bloque p {
 	font-size: .8em;
+	margin-left: .5em;
 }
 
-.contenedor input{
+.bloque p {
+	color: #777;
+}
+
+.bloque input, .bloque textarea {
 	margin: .4em .2em 0 .8em;
 }

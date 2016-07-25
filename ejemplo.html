@@ -8,8 +8,8 @@
 </head>
 <body>
 	<h1>Ejemplo HTML de uso de la librería jvalidations.js</h1>
-	<form action="#" name="formulario">
-		<label for="value1">Escriba un número en el siguiente campo:</label>
+	<form action="#" name="formulario" id="formulario">
+		<label for="value1">Escriba un número en el siguiente campo (para enteros o reales):</label>
 		<input type="text" name="value1" id="value1" maxlength="15" size="15" oninput="borraSpan();">
 	</form>
 	<hr>
@@ -51,20 +51,36 @@
 
 		<div class="bloque">
 			<h3>Validación de fechas</h3>
-			<input type="radio" name="dateoption" value="opcion1" checked>
+			<input type="radio" name="dateoption" id="radio1" value="opcion1" form="formulario" checked>
 			<label for="value2" form="formulario">Escriba una fecha en el siguiente campo:</label><br>
 			<input type="text" name="value2" id="value2" maxlength="10" size="10" oninput="borraSpan();" form="formulario" placeholder="dd/mm/aaaa"><br>
-			<input type="radio" name="dateoption" value="opcion2">
+			<input type="radio" name="dateoption" id="radio2" value="opcion2" form="formulario">
 			<label for="value3" form="formulario">Escriba una fecha utilizando los siguientes campos:</label><br>
 			<input type="text" name="value3_1" id="value3_1" maxlength="2" size="2" oninput="borraSpan();" form="formulario" placeholder="dd">/
 			<input type="text" name="value3_2" id="value3_2" maxlength="2" size="2" oninput="borraSpan();" form="formulario" placeholder="mm">/
 			<input type="text" name="value3_3" id="value3_3" maxlength="4" size="4" oninput="borraSpan();" form="formulario" placeholder="aaaa"><br>
-			<input type="checkbox" name="edad" id="edad" form="formulario"><label for="edad">Marca esta opción si se trata de una fecha de nacimiento</label>
-			<ul>
-				<li>
-					<button type="button" id="botdate1">stringIsDate</button>
-				</li>
-			</ul>
+			<input type="checkbox" name="edad" id="edad" form="formulario"><label for="edad">Marca esta opción si se trata de una fecha de nacimiento</label><br>
+			<button type="button" id="botdate1">stringIsDate</button><br>
+			<textarea name="datemens" id="datemens" form="formulario" cols="30" rows="5"></textarea>
+		</div>
+
+		<div class="bloque">
+			<h3>Validación de teléfonos</h3><br>
+			<label for="telefono">Introduce un número fijo de teléfono</label>
+			<input type="text" name="telefono" id="telefono" maxlength="20" size="20" oninput="borraSpan();" form="formulario"><br><br>
+			<label for="pais">Escoge un país</label>
+			<select name="pais" id="pais" oninput="borraSpan();">
+				<option value="" selected>- por defecto -</option>
+				<option value="es">España</option>
+				<option value="fr-fr">Francia</option>
+				<option value="ie">Irlanda</option>
+				<option value="it">Italia</option>
+			</select><br>
+			<p><strong><u>Algunos formatos de teléfono</u></strong></p>
+			<p>Francia: <strong>0x xx xx xx xx</strong> ó <strong>+33 x xxxxxxxx</strong></p>
+			<p>Irlanda: <strong>0xxxxx xxx xxx</strong> ó <strong>0xxxxx xxxxxx</strong> ó <strong>+353 0xxxxx xxxxxx</strong></p>
+			<p>Italia: <strong>06 xxxxxxxx</strong> ó <strong>+39 06 xxxxxxxx</strong></p>
+			<button type="button" id="botphone1">fixedPhone</button><span id="out15"></span>
 		</div>
 	</div>
 	<script src="js/ejemplo.js"></script>
