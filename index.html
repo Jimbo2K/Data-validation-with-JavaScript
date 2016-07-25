@@ -12,10 +12,13 @@
 </head>
 <body>
 	<header>
-		<h1><span id="htitle">Data validation with JavaScript</span><button id="btnlang" title="Cambia a español">English</button></h1>
+		<h1><img src="assets/img/jvalidations.png" alt="JValidations Logo" title="JValidations"><span id="htitle"> JValidations: Validación de datos con JavaScript</span><button id="btnlang" title="Change to english">Spanish</button></h1>
 	</header>
-
-	<div id="eng-page" class="page-show">
+	<section id="gh_link">
+		<a href="https://github.com/Jimbo2K/Data-validation-with-JavaScript" target="_blank" title="Download on Github"><img src="assets/img/jvalidations_github_900x460.png" alt="Github and JValidations logo"></a>
+	</section>
+	
+	<div id="eng-page" class="page-hidden">
 		<h2>Functions with js and regular expressions for data validation (especially for forms)</h2>
 		<p>Although HTML 5 implements its own formulary validation system, its performance depends largely on the browser used. So maybe it won't work in every browser.</p>
 		<p>Also in some cases it requires specific validations that HTML 5 can not performed (eg: the date format varies by country and it is important to adapt it for improving accessibility).</p>
@@ -27,9 +30,152 @@
 		<p>Validations can be performed using only JavaScript code, even if mixed with regular expressions is greatly minimized.</p>
 		<p>As not everyone is acquainted with using regular expressions, I've tried to make two versions for each validation function, with and without mixture of js and regular expressions.</p>
 		<p>You can find more about regular expressions in this link from <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions" title="Mozilla Developer Network" target="_blank">MDN</a>.</p>
+		<h2>JValidations download</h2>
+		<p>You can download the library from the next link:</p>
+		<strong><a class="mainlink" href="https://github.com/Jimbo2K/Data-validation-with-JavaScript/blob/master/js/jvalidations.js" title="JValidations library download" download>JValidations</a></strong><br>
+		<p>Also, you can download it from Github where you can find the example's code (actually only in spanish). You can click on the image with Github logo on top, or in the next link:</p>
+		<strong><a class="mainlink" href="https://github.com/Jimbo2K/Data-validation-with-JavaScript" title="Github repository link" target="_blank">Repositorio de JValidations en Github</a></strong>
+		<h2>Jvalidations code</h2>
+		<p>As it was explained before, JValidations contains JavaScript-only functions, with no external dependencies.<br>
+		That's why mostly all functions can be "copy & paste" in other code projects, without linking the complete library. However <strong>some functions have dependencies with others auxiliar functions inside the library</strong>, so if someone wants to copy a function with a dependence, also has to copy the auxiliar functions.</p>
+		<p>All code is commented (in english and spanish) as <strong>one of the objectives of this project is to have a didactic purpose</strong>.</p>
+		<div class="imgcont">
+			<img src="assets/img/code01_900x411.png" alt="an example of commented code">
+		</div>
+		<h3>JValidations' functions<small>(25/07/2016)</small></h3>
+		<ul>
+			<li>
+				<h4>ValidFloat1(<span class="args">pnum</span>) <span>Validación de número real, positivo o negativo</span></h4>
+				<p><u>Argumentos</u>: <span class="args">pnum</span> <span class="vars">string</span> o <span class="vars">número</span>.</p>
+				<p><u>Salida</u>: <span class="output">true</span> si <span class="args">pnum</span> es un nro. real (los enteros también se consideran reales), <span class="output">false</span> si no lo es.</p>
+				<p><strong>Nota:</strong> sin expresiones regulares.</p>
+			</li>
+			<li>
+				<h4>stringIsFloat(<span class="args">pnum</span>) <span>Validación de número real, positivo o negativo</span></h4>
+				<p><u>Argumentos</u>: <span class="args">pnum</span> <span class="vars">string</span> o <span class="vars">número</span>.</p>
+				<p><u>Salida</u>: <span class="output">true</span> si <span class="args">pnum</span> es un nro. real (los enteros también se consideran reales), <span class="output">false</span> si no lo es.</p></p>
+			</li>
+			<li>
+				<h4>ValidPFloat(<span class="args">pnum</span>) <span>Validación de número real positivo</span></h4>
+				<p><u>Argumentos</u>: <span class="args">pnum</span> <span class="vars">string</span> o <span class="vars">número</span>.</p>
+				<p><u>Salida</u>: <span class="output">true</span> si <span class="args">pnum</span> es un nro. real positivo (los enteros también se consideran reales), <span class="output">false</span> si no es un número o un número positivo.</p>
+				<p><strong>Nota:</strong> sin expresiones regulares.</p>
+			</li>
+			<li>
+				<h4>stringIsPFloat(<span class="args">pnum</span>) <span>Validación de número real positivo</span></h4>
+				<p><u>Argumentos</u>: <span class="args">pnum</span> <span class="vars">string</span> o <span class="vars">número</span>.</p>
+				<p><u>Salida</u>: <span class="output">true</span> si <span class="args">pnum</span> es un nro. real positivo (los enteros también se consideran reales), <span class="output">false</span> si no es un número o un número positivo.</p>
+			</li>
+			<li>
+				<h4>ValidNFloat(<span class="args">pnum</span>) <span>Validación de número real negativo</span></h4>
+				<p><u>Argumentos</u>: <span class="args">pnum</span> <span class="vars">string</span> o <span class="vars">número</span>.</p>
+				<p><u>Salida</u>: <span class="output">true</span> si <span class="args">pnum</span> es un nro. real negativo (los enteros también se consideran reales), <span class="output">false</span> si no es un número o un número negativo.</p>
+				<p><strong>Nota:</strong> sin expresiones regulares.</p>
+			</li>
+			<li>
+				<h4>stringIsNFloat(<span class="args">pnum</span>) <span>Validación de número real negativo</span></h4>
+				<p><u>Argumentos</u>: <span class="args">pnum</span> <span class="vars">string</span> o <span class="vars">número</span>.</p>
+				<p><u>Salida</u>: <span class="output">true</span> si <span class="args">pnum</span> es un nro. real negativo (los enteros también se consideran reales), <span class="output">false</span> si no es un número o un número negativo.</p>
+			</li>
+			<li>
+				<h4>ValidFloat(<span class="args">pnum</span>,<span class="args">psign</span>) <span>Validación de número real positivo, neagtivo o indistintamente de su signo</span></h4>
+				<p><u>Argumentos</u>: <span class="args">pnum</span> <span class="vars">string</span> o <span class="vars">número</span>;<span class="args">psign</span>(Opcional) si es <span class="vars">1</span> validación de reales positivos, para <span class="vars">-1</span> validación de reales negativos, si no se utiliza o se pasa un valor distinto de los anteriores la validación es para reales positivos o negativos.</p>
+				<p><u>Salida</u>: <span class="output">true</span> si <span class="args">pnum</span> es un nro. real válido (ver <span class="args">psign</span>), <span class="output">false</span> si no es válido.</p>
+			</li>
+			<li>
+				<h4>ValidInt1(<span class="args">pnum</span>) <span>Validación de número entero, positivo o negativo</span></h4>
+				<p><u>Argumentos</u>: <span class="args">pnum</span> <span class="vars">string</span> o <span class="vars">número</span>.</p>
+				<p><u>Salida</u>: <span class="output">true</span> si <span class="args">pnum</span> es un nro. entero, <span class="output">false</span> si no lo es.</p>
+				<p><strong>Nota:</strong> sin expresiones regulares.</p>
+			</li>
+			<li>
+				<h4>stringIsInt(<span class="args">pnum</span>) <span>Validación de número entero, positivo o negativo</span></h4>
+				<p><u>Argumentos</u>: <span class="args">pnum</span> <span class="vars">string</span> o <span class="vars">número</span>.</p>
+				<p><u>Salida</u>: <span class="output">true</span> si <span class="args">pnum</span> es un nro. entero, <span class="output">false</span> si no lo es.</p></p>
+			</li>
+			<li>
+				<h4>ValidPInt(<span class="args">pnum</span>) <span>Validación de número entero positivo</span></h4>
+				<p><u>Argumentos</u>: <span class="args">pnum</span> <span class="vars">string</span> o <span class="vars">número</span>.</p>
+				<p><u>Salida</u>: <span class="output">true</span> si <span class="args">pnum</span> es un nro. entero positivo, <span class="output">false</span> si no es un número o un número entero positivo.</p>
+				<p><strong>Nota:</strong> sin expresiones regulares.</p>
+			</li>
+			<li>
+				<h4>stringIsPInt(<span class="args">pnum</span>) <span>Validación de número entero positivo</span></h4>
+				<p><u>Argumentos</u>: <span class="args">pnum</span> <span class="vars">string</span> o <span class="vars">número</span>.</p>
+				<p><u>Salida</u>: <span class="output">true</span> si <span class="args">pnum</span> es un nro. entero positivo (los enteros también se consideran reales), <span class="output">false</span> si no es un número o un número positivo.</p>
+			</li>
+			<li>
+				<h4>ValidNInt(<span class="args">pnum</span>) <span>Validación de número entero negativo</span></h4>
+				<p><u>Argumentos</u>: <span class="args">pnum</span> <span class="vars">string</span> o <span class="vars">número</span>.</p>
+				<p><u>Salida</u>: <span class="output">true</span> si <span class="args">pnum</span> es un nro. entero negativo (los enteros también se consideran reales), <span class="output">false</span> si no es un número o un número negativo.</p>
+				<p><strong>Nota:</strong> sin expresiones regulares.</p>
+			</li>
+			<li>
+				<h4>stringIsNInt(<span class="args">pnum</span>) <span>Validación de número entero negativo</span></h4>
+				<p><u>Argumentos</u>: <span class="args">pnum</span> <span class="vars">string</span> o <span class="vars">número</span>.</p>
+				<p><u>Salida</u>: <span class="output">true</span> si <span class="args">pnum</span> es un nro. entero negativo, <span class="output">false</span> si no es un número o un número negativo.</p>
+			</li>
+			<li>
+				<h4>ValidInt(<span class="args">pnum</span>,<span class="args">psign</span>) <span>Validación de número entero positivo, neagtivo o indistintamente de su signo</span></h4>
+				<p><u>Argumentos</u>: <span class="args">pnum</span> <span class="vars">string</span> o <span class="vars">número</span>;<span class="args">psign</span>(Opcional) si es <span class="vars">1</span> validación de reales positivos, para <span class="vars">-1</span> validación de reales negativos, si no se utiliza o se pasa un valor distinto de los anteriores la validación es para reales positivos o negativos.</p>
+				<p><u>Salida</u>: <span class="output">true</span> si <span class="args">pnum</span> es un nro. entero válido (ver <span class="args">psign</span>), <span class="output">false</span> si no es válido.</p>
+			</li>
+			<li>
+				<h4>codeIsbn10(<span class="args">pisbn</span>) <span>Validación de código ISBN de 10 dígitos</span></h4>
+				<p><u>Argumentos</u>: <span class="args">pnum</span> <span class="vars">string</span> o <span class="vars">número</span>.</p>
+				<p><u>Salida</u>: <span class="output">true</span> si <span class="args">pisbn</span> es un código ISBN de 10 dígitos válido (el 10º dígito corresponde al código de control calculado en base a los 9 anteriores).</p>
+			</li>
+			<li>
+				<h4>codeIsbn13(<span class="args">pisbn</span>) <span>Validación de código ISBN de 13 dígitos</span></h4>
+				<p><u>Argumentos</u>: <span class="args">pnum</span> <span class="vars">string</span> o <span class="vars">número</span>.</p>
+				<p><u>Salida</u>: <span class="output">true</span> si <span class="args">pisbn</span> es un código ISBN de 13 dígitos válido (el 13º dígito corresponde al código de control calculado en base a los 12 anteriores).</p>
+			</li>
+			<li>
+				<h4>codeIsbn(<span class="args">pisbn</span>) <span>Validación de código ISBN de 10 ó 13 dígitos</span></h4>
+				<p><u>Argumentos</u>: <span class="args">pnum</span> <span class="vars">string</span> o <span class="vars">número</span>.</p>
+				<p><u>Salida</u>: <span class="output">true</span> si <span class="args">pisbn</span> es un código ISBN válido (el último dígito corresponde al código de control calculado en base a los anteriores).</p>
+				<p><span class="warning">Dependencias:</span> codeIsbn10() y codeIsbn13().</p>
+			</li>
+			<li>
+				<h4>stringIsYear(<span class="args">pyear</span>) <span>Validación de una cadena como año en formato 'A.D.' (no el formato del Objeto Date Js)</span></h4>
+				<p><u>Argumentos</u>: <span class="args">pyear</span> <span class="vars">string</span>.</p>
+				<p><u>Salida</u>: <span class="output">true</span> si <span class="args">pyear</span> es un año con formato válido (p.ej. "1345", "1345 A.D.", "700 B.C.").</p>
+			</li>
+			<li>
+				<h4>stringIsDate(<span class="args">pyear</span>,<span class="args">page</span>) <span>Validación de una cadena con distintos formatos de fecha posible</span></h4>
+				<p><u>Argumentos</u>: <span class="args">pyear</span> <span class="vars">string</span> con formato dd&lt;sep&gt;mm&lt;sep&gt;aaaa y &lt;sep&gt;=' ' , '_' , '-' , '/' , '\' , '.'; <span class="args">page</span>(Opcional) un <span class="vars">booleano</span> que si vale <span class="vars">true</span> la fecha se considera de nacimiento.</p>
+				<p><u>Salida</u>: <span class="output">array</span> cuyo primer elemento será <span class="output">true</span> o <span class="output">false</span> si la fecha es o no válida. En caso de ser no válida los siguientes 4 elementos contendrán mensajes para identificar el fallo.</p>
+				<p><span class="warning">Dependencias:</span> findSep().</p>
+			</li>
+			<li>
+				<h4>fixedPhone(<span class="args">ptel</span>,<span class="args">pcountry</span>) <span>Validación de una cadena como número de teléfono fijo de distintos paises europeos (actualmente España, Francia, Irlanda e Italia) Si no se indica el país chequeará el lenguaje del navegador para asignarlo. Si no estuviese disponible tomará por defecto España.</span></h4>
+				<p><u>Argumentos</u>: <span class="args">ptel</span> <span class="vars">string</span>; <span class="args">pcountry</span>(Opcional) un <span class="vars">string</span> con el código del país para chequear el formato (<a href="http://www.metamodpro.com/browser-language-codes" target="_blank">códigos de paises</a>).</p>
+				<p><u>Salida</u>: <span class="output">true</span> si <span class="args">ptel</span> es un teléfono fijo con formato válido para el país indicado.</p>
+			</li>
+			<li>
+				<h4>stringIsName(<span class="args">pname</span>) <span>Un nombre (de pila o/y apellidos) no puede contener números o símbolos</span></h4>
+				<p><u>Argumentos</u>: <span class="args">pname</span> <span class="vars">string</span>.</p>
+				<p><u>Salida</u>: <span class="output">true</span> si <span class="args">pname</span> no es una cadena vacía, no contiene ni números ni símbolos.</p>
+			</li>
+			<li>
+				<h4>stringIsName(<span class="args">pemail</span>) <span>Valida si el formato de una cadena se corresponde con el de un e-mail</span></h4>
+				<p><u>Argumentos</u>: <span class="args">pemail</span> <span class="vars">string</span>.</p>
+				<p><u>Salida</u>: <span class="output">true</span> si <span class="args">pemail</span> tiene el formato de un e-mail (no chequea si es un e-mail real).</p>
+			</li>
+			<li>
+				<h4>findSep(<span class="args">pstring</span>) <span>Busca en una cadena símbolos de separación (' ' , '-' , '/' , '\' , '_') y devuelve el primero que encuentra (se presupone que se utiliza sólo un tipo)</span></h4>
+				<p><u>Argumentos</u>: <span class="args">pstring</span> <span class="vars">string</span>.</p>
+				<p><u>Salida</u>: <span class="output">string</span> con el símbolo que ha encontrado (p. ej. para "28/02/2013" la salida será "/").</p>
+			</li>
+			<li>
+				<h4>onlyText(<span class="args">pstring</span>) <span>Elimina de una cadena cualquier carácter que no sea una letra o un espacio en blanco. Admite "ñ", "Ñ", "ü", "Ü" y acentos españoles.</span></h4>
+				<p><u>Argumentos</u>: <span class="args">pstring</span> <span class="vars">string</span>.</p>
+				<p><u>Salida</u>: <span class="output">string</span> igual a <span class="args">pstring</span> pero con números y símbolos eliminados.</p>
+			</li>
+		</ul>
 	</div>
 
-	<div id="spn-page" class="page-hidden">
+	<div id="spn-page" class="page-show">
 		<p></p>
 		<h2>Funciones con js y expresiones regulares para validación de datos (especialmente formularios)</h2>
 		<p>Aunque HTML 5 implementa su propio sistema de validación para formularios, su funcionamiento depende en gran medida del navegador que utilice el formulario pudiendo funcionar o no.</p>
@@ -42,7 +188,151 @@
 		<p>Las validaciones se pueden realizar empleando sólo código JavaScript, aunque si se mezcla con expresiones regulares se puede minimizar en gran medida.</p>
 		<p>Como no todo el mundo está familiarizado con el uso de expresiones regulares, he intentado hacer dos versiones para cada función de validación, con y sin mezcla de expresiones regulares y js.</p>
 		<p>You can find more about regular expressions in this link from <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Regular_Expressions" title="Mozilla Developer Network" target="_blank">MDN</a>.</p>
+		<h2>Descargar JValidations</h2>
+		<p>Puedes descargar la librería del siguiente enlace:</p>
+		<strong><a class="mainlink" href="https://github.com/Jimbo2K/Data-validation-with-JavaScript/blob/master/js/jvalidations.js" title="Descarga de la librería JavaScript" download>JValidations</a></strong><br>
+		<p>También puedes acceder a la descarga desde Github donde, además de la librería está el código de los ejemplos. Para ello haz click en la imagen del comienzo o en el siguiente enlace:</p>
+		<strong><a class="mainlink" href="https://github.com/Jimbo2K/Data-validation-with-JavaScript" title="Enlace al repositorio en Github" target="_blank">Repositorio de JValidations en Github</a></strong>
+		<h2>El código de Jvalidations</h2>
+		<p>Como ya se ha explicado anteriormente la librería JValidations contiene una serie de funciones escritas por completo en Javascript, sin ninguna dependencia con librerías externas.<br>
+		Por esta razón la mayoría de funciones se pueden "copiar y pegar" en otros proyectos de código, sin necesidad de enlazar la librería completa. Sin embargo <strong>algunas funciones tienen dependencias con otras auxiliares del mismo código</strong>, de manera que si se quieren copiar también se deberán copiar las auxiliares. </p>
+		<p>Todo el código está comentado (en español e inglés) ya que <strong>uno de los objetivos de este proyecto es que tenga una finalidad didáctica</strong>.</p>
+		<div class="imgcont">
+			<img src="assets/img/code01_900x411.png" alt="ejemplo de código comentado">
+		</div>
+		<h3>Funciones integradas en JValidations <small>(25/07/2016)</small></h3>
+		<ul>
+			<li>
+				<h4>ValidFloat1(<span class="args">pnum</span>) <span>Validación de número real, positivo o negativo</span></h4>
+				<p><u>Argumentos</u>: <span class="args">pnum</span> <span class="vars">string</span> o <span class="vars">número</span>.</p>
+				<p><u>Salida</u>: <span class="output">true</span> si <span class="args">pnum</span> es un nro. real (los enteros también se consideran reales), <span class="output">false</span> si no lo es.</p>
+				<p><strong>Nota:</strong> sin expresiones regulares.</p>
+			</li>
+			<li>
+				<h4>stringIsFloat(<span class="args">pnum</span>) <span>Validación de número real, positivo o negativo</span></h4>
+				<p><u>Argumentos</u>: <span class="args">pnum</span> <span class="vars">string</span> o <span class="vars">número</span>.</p>
+				<p><u>Salida</u>: <span class="output">true</span> si <span class="args">pnum</span> es un nro. real (los enteros también se consideran reales), <span class="output">false</span> si no lo es.</p></p>
+			</li>
+			<li>
+				<h4>ValidPFloat(<span class="args">pnum</span>) <span>Validación de número real positivo</span></h4>
+				<p><u>Argumentos</u>: <span class="args">pnum</span> <span class="vars">string</span> o <span class="vars">número</span>.</p>
+				<p><u>Salida</u>: <span class="output">true</span> si <span class="args">pnum</span> es un nro. real positivo (los enteros también se consideran reales), <span class="output">false</span> si no es un número o un número positivo.</p>
+				<p><strong>Nota:</strong> sin expresiones regulares.</p>
+			</li>
+			<li>
+				<h4>stringIsPFloat(<span class="args">pnum</span>) <span>Validación de número real positivo</span></h4>
+				<p><u>Argumentos</u>: <span class="args">pnum</span> <span class="vars">string</span> o <span class="vars">número</span>.</p>
+				<p><u>Salida</u>: <span class="output">true</span> si <span class="args">pnum</span> es un nro. real positivo (los enteros también se consideran reales), <span class="output">false</span> si no es un número o un número positivo.</p>
+			</li>
+			<li>
+				<h4>ValidNFloat(<span class="args">pnum</span>) <span>Validación de número real negativo</span></h4>
+				<p><u>Argumentos</u>: <span class="args">pnum</span> <span class="vars">string</span> o <span class="vars">número</span>.</p>
+				<p><u>Salida</u>: <span class="output">true</span> si <span class="args">pnum</span> es un nro. real negativo (los enteros también se consideran reales), <span class="output">false</span> si no es un número o un número negativo.</p>
+				<p><strong>Nota:</strong> sin expresiones regulares.</p>
+			</li>
+			<li>
+				<h4>stringIsNFloat(<span class="args">pnum</span>) <span>Validación de número real negativo</span></h4>
+				<p><u>Argumentos</u>: <span class="args">pnum</span> <span class="vars">string</span> o <span class="vars">número</span>.</p>
+				<p><u>Salida</u>: <span class="output">true</span> si <span class="args">pnum</span> es un nro. real negativo (los enteros también se consideran reales), <span class="output">false</span> si no es un número o un número negativo.</p>
+			</li>
+			<li>
+				<h4>ValidFloat(<span class="args">pnum</span>,<span class="args">psign</span>) <span>Validación de número real positivo, neagtivo o indistintamente de su signo</span></h4>
+				<p><u>Argumentos</u>: <span class="args">pnum</span> <span class="vars">string</span> o <span class="vars">número</span>;<span class="args">psign</span>(Opcional) si es <span class="vars">1</span> validación de reales positivos, para <span class="vars">-1</span> validación de reales negativos, si no se utiliza o se pasa un valor distinto de los anteriores la validación es para reales positivos o negativos.</p>
+				<p><u>Salida</u>: <span class="output">true</span> si <span class="args">pnum</span> es un nro. real válido (ver <span class="args">psign</span>), <span class="output">false</span> si no es válido.</p>
+			</li>
+			<li>
+				<h4>ValidInt1(<span class="args">pnum</span>) <span>Validación de número entero, positivo o negativo</span></h4>
+				<p><u>Argumentos</u>: <span class="args">pnum</span> <span class="vars">string</span> o <span class="vars">número</span>.</p>
+				<p><u>Salida</u>: <span class="output">true</span> si <span class="args">pnum</span> es un nro. entero, <span class="output">false</span> si no lo es.</p>
+				<p><strong>Nota:</strong> sin expresiones regulares.</p>
+			</li>
+			<li>
+				<h4>stringIsInt(<span class="args">pnum</span>) <span>Validación de número entero, positivo o negativo</span></h4>
+				<p><u>Argumentos</u>: <span class="args">pnum</span> <span class="vars">string</span> o <span class="vars">número</span>.</p>
+				<p><u>Salida</u>: <span class="output">true</span> si <span class="args">pnum</span> es un nro. entero, <span class="output">false</span> si no lo es.</p></p>
+			</li>
+			<li>
+				<h4>ValidPInt(<span class="args">pnum</span>) <span>Validación de número entero positivo</span></h4>
+				<p><u>Argumentos</u>: <span class="args">pnum</span> <span class="vars">string</span> o <span class="vars">número</span>.</p>
+				<p><u>Salida</u>: <span class="output">true</span> si <span class="args">pnum</span> es un nro. entero positivo, <span class="output">false</span> si no es un número o un número entero positivo.</p>
+				<p><strong>Nota:</strong> sin expresiones regulares.</p>
+			</li>
+			<li>
+				<h4>stringIsPInt(<span class="args">pnum</span>) <span>Validación de número entero positivo</span></h4>
+				<p><u>Argumentos</u>: <span class="args">pnum</span> <span class="vars">string</span> o <span class="vars">número</span>.</p>
+				<p><u>Salida</u>: <span class="output">true</span> si <span class="args">pnum</span> es un nro. entero positivo (los enteros también se consideran reales), <span class="output">false</span> si no es un número o un número positivo.</p>
+			</li>
+			<li>
+				<h4>ValidNInt(<span class="args">pnum</span>) <span>Validación de número entero negativo</span></h4>
+				<p><u>Argumentos</u>: <span class="args">pnum</span> <span class="vars">string</span> o <span class="vars">número</span>.</p>
+				<p><u>Salida</u>: <span class="output">true</span> si <span class="args">pnum</span> es un nro. entero negativo (los enteros también se consideran reales), <span class="output">false</span> si no es un número o un número negativo.</p>
+				<p><strong>Nota:</strong> sin expresiones regulares.</p>
+			</li>
+			<li>
+				<h4>stringIsNInt(<span class="args">pnum</span>) <span>Validación de número entero negativo</span></h4>
+				<p><u>Argumentos</u>: <span class="args">pnum</span> <span class="vars">string</span> o <span class="vars">número</span>.</p>
+				<p><u>Salida</u>: <span class="output">true</span> si <span class="args">pnum</span> es un nro. entero negativo, <span class="output">false</span> si no es un número o un número negativo.</p>
+			</li>
+			<li>
+				<h4>ValidInt(<span class="args">pnum</span>,<span class="args">psign</span>) <span>Validación de número entero positivo, neagtivo o indistintamente de su signo</span></h4>
+				<p><u>Argumentos</u>: <span class="args">pnum</span> <span class="vars">string</span> o <span class="vars">número</span>;<span class="args">psign</span>(Opcional) si es <span class="vars">1</span> validación de reales positivos, para <span class="vars">-1</span> validación de reales negativos, si no se utiliza o se pasa un valor distinto de los anteriores la validación es para reales positivos o negativos.</p>
+				<p><u>Salida</u>: <span class="output">true</span> si <span class="args">pnum</span> es un nro. entero válido (ver <span class="args">psign</span>), <span class="output">false</span> si no es válido.</p>
+			</li>
+			<li>
+				<h4>codeIsbn10(<span class="args">pisbn</span>) <span>Validación de código ISBN de 10 dígitos</span></h4>
+				<p><u>Argumentos</u>: <span class="args">pnum</span> <span class="vars">string</span> o <span class="vars">número</span>.</p>
+				<p><u>Salida</u>: <span class="output">true</span> si <span class="args">pisbn</span> es un código ISBN de 10 dígitos válido (el 10º dígito corresponde al código de control calculado en base a los 9 anteriores).</p>
+			</li>
+			<li>
+				<h4>codeIsbn13(<span class="args">pisbn</span>) <span>Validación de código ISBN de 13 dígitos</span></h4>
+				<p><u>Argumentos</u>: <span class="args">pnum</span> <span class="vars">string</span> o <span class="vars">número</span>.</p>
+				<p><u>Salida</u>: <span class="output">true</span> si <span class="args">pisbn</span> es un código ISBN de 13 dígitos válido (el 13º dígito corresponde al código de control calculado en base a los 12 anteriores).</p>
+			</li>
+			<li>
+				<h4>codeIsbn(<span class="args">pisbn</span>) <span>Validación de código ISBN de 10 ó 13 dígitos</span></h4>
+				<p><u>Argumentos</u>: <span class="args">pnum</span> <span class="vars">string</span> o <span class="vars">número</span>.</p>
+				<p><u>Salida</u>: <span class="output">true</span> si <span class="args">pisbn</span> es un código ISBN válido (el último dígito corresponde al código de control calculado en base a los anteriores).</p>
+				<p><span class="warning">Dependencias:</span> codeIsbn10() y codeIsbn13().</p>
+			</li>
+			<li>
+				<h4>stringIsYear(<span class="args">pyear</span>) <span>Validación de una cadena como año en formato 'A.D.' (no el formato del Objeto Date Js)</span></h4>
+				<p><u>Argumentos</u>: <span class="args">pyear</span> <span class="vars">string</span>.</p>
+				<p><u>Salida</u>: <span class="output">true</span> si <span class="args">pyear</span> es un año con formato válido (p.ej. "1345", "1345 A.D.", "700 B.C.").</p>
+			</li>
+			<li>
+				<h4>stringIsDate(<span class="args">pyear</span>,<span class="args">page</span>) <span>Validación de una cadena con distintos formatos de fecha posible</span></h4>
+				<p><u>Argumentos</u>: <span class="args">pyear</span> <span class="vars">string</span> con formato dd&lt;sep&gt;mm&lt;sep&gt;aaaa y &lt;sep&gt;=' ' , '_' , '-' , '/' , '\' , '.'; <span class="args">page</span>(Opcional) un <span class="vars">booleano</span> que si vale <span class="vars">true</span> la fecha se considera de nacimiento.</p>
+				<p><u>Salida</u>: <span class="output">array</span> cuyo primer elemento será <span class="output">true</span> o <span class="output">false</span> si la fecha es o no válida. En caso de ser no válida los siguientes 4 elementos contendrán mensajes para identificar el fallo.</p>
+				<p><span class="warning">Dependencias:</span> findSep().</p>
+			</li>
+			<li>
+				<h4>fixedPhone(<span class="args">ptel</span>,<span class="args">pcountry</span>) <span>Validación de una cadena como número de teléfono fijo de distintos paises europeos (actualmente España, Francia, Irlanda e Italia) Si no se indica el país chequeará el lenguaje del navegador para asignarlo. Si no estuviese disponible tomará por defecto España.</span></h4>
+				<p><u>Argumentos</u>: <span class="args">ptel</span> <span class="vars">string</span>; <span class="args">pcountry</span>(Opcional) un <span class="vars">string</span> con el código del país para chequear el formato (<a href="http://www.metamodpro.com/browser-language-codes" target="_blank">códigos de paises</a>).</p>
+				<p><u>Salida</u>: <span class="output">true</span> si <span class="args">ptel</span> es un teléfono fijo con formato válido para el país indicado.</p>
+			</li>
+			<li>
+				<h4>stringIsName(<span class="args">pname</span>) <span>Un nombre (de pila o/y apellidos) no puede contener números o símbolos</span></h4>
+				<p><u>Argumentos</u>: <span class="args">pname</span> <span class="vars">string</span>.</p>
+				<p><u>Salida</u>: <span class="output">true</span> si <span class="args">pname</span> no es una cadena vacía, no contiene ni números ni símbolos.</p>
+			</li>
+			<li>
+				<h4>stringIsName(<span class="args">pemail</span>) <span>Valida si el formato de una cadena se corresponde con el de un e-mail</span></h4>
+				<p><u>Argumentos</u>: <span class="args">pemail</span> <span class="vars">string</span>.</p>
+				<p><u>Salida</u>: <span class="output">true</span> si <span class="args">pemail</span> tiene el formato de un e-mail (no chequea si es un e-mail real).</p>
+			</li>
+			<li>
+				<h4>findSep(<span class="args">pstring</span>) <span>Busca en una cadena símbolos de separación (' ' , '-' , '/' , '\' , '_') y devuelve el primero que encuentra (se presupone que se utiliza sólo un tipo)</span></h4>
+				<p><u>Argumentos</u>: <span class="args">pstring</span> <span class="vars">string</span>.</p>
+				<p><u>Salida</u>: <span class="output">string</span> con el símbolo que ha encontrado (p. ej. para "28/02/2013" la salida será "/").</p>
+			</li>
+			<li>
+				<h4>onlyText(<span class="args">pstring</span>) <span>Elimina de una cadena cualquier carácter que no sea una letra o un espacio en blanco. Admite "ñ", "Ñ", "ü", "Ü" y acentos españoles.</span></h4>
+				<p><u>Argumentos</u>: <span class="args">pstring</span> <span class="vars">string</span>.</p>
+				<p><u>Salida</u>: <span class="output">string</span> igual a <span class="args">pstring</span> pero con números y símbolos eliminados.</p>
+			</li>
+		</ul>
 	</div>
+	<br>
 	<script src="js/page.js"></script>
 </body>
 </html>
