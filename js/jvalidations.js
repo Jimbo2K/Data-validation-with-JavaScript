@@ -222,6 +222,20 @@ function validInt(pnum, psign) {
 	return out;
 }
 
+/***** HEX *****/
+
+/*Validates a string as an hexadecimal number
+Valida una cadena como numero hexadecimal*/
+//ARG: pnum
+//OUTPUT: true if pnum is an HEX number, else false;
+function stringIsHex (pnum) {
+	var rexp=/^\s*(?:\#[0-9a-fA-F]{3}|\#[0-9a-fA-F]{6}|[0-9a-fA-F]+)\s*$/; //This reg. exp. admits hexadecimal numbers and hexadecimal colors (#xyz #xxyyzz)
+	if (!rexp.test(pnum)){
+		return false;
+	}
+	return true;
+}
+
 /***** ISBN *****/
 
 /*Validates an ISBN10 number / Valida un nro. ISBN10*/
