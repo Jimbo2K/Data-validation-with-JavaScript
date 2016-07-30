@@ -34,7 +34,72 @@ function eventClick(e){
   Si el evento lo ha generado un botón lanza la función*/
   if (tagOfElement==='BUTTON'){
   	strFunction=idOfElement.replace('bot',''); //remove the 'bot' from button's id
-  	eval(strFunction+'();'); // launch the function
+  	// eval(strFunction+'();'); // launch the function
+  	switch (strFunction) {
+  		case 'int1':
+  			int1();
+  			break;
+  		case 'int2':
+  			int2();
+  			break;
+  		case 'int3':
+  			int3();
+  			break;
+  		case 'int4':
+  			int4();
+  			break;
+  		case 'int5':
+  			int5();
+  			break;
+  		case 'int6':
+  			int6();
+  			break;
+  		case 'int7':
+  			int7();
+  			break;
+  		case 'float1':
+  			float1();
+  			break;
+  		case 'float2':
+  			float2();
+  			break;
+  		case 'float3':
+  			float3();
+  			break;
+  		case 'float4':
+  			float4();
+  			break;
+  		case 'float5':
+  			float5();
+  			break;
+  		case 'float6':
+  			float6();
+  			break;
+  		case 'float7':
+  			float7();
+  			break;
+  		case 'hex1':
+  			hex1();
+  			break;
+  		case 'isbn1':
+  			isbn1();
+  			break;
+  		case 'isbn2':
+  			isbn2();
+  			break;
+  		case 'isbn3':
+  			isbn3();
+  			break;
+  		case 'date1':
+  			date1();
+  			break;
+  		case 'date2':
+  			date2();
+  			break;
+  		case 'phone1':
+  			phone1();
+  			break;
+  	}
   }
 }
 
