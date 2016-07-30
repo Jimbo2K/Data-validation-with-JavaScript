@@ -9,7 +9,7 @@ header {
 	width: 100%;
 	margin: 0;
 	padding:0;
-	background-color: #333399;
+	background-color: #3d3d8f;
 	height: 3em;
 	max-height: 3em;
 	padding-top: 5px;
@@ -60,6 +60,85 @@ h1 button {
 #spn-page, #eng-page{
 	width: 80vw;
 	margin-left: 10vw;
+}
+
+#menu {
+	position: fixed;
+	z-index: 100;
+	top:2.8em;
+	padding:.5em;
+	clip: rect(0px,6vw,6vw,0px);
+}
+
+
+#menu button {
+	background-color: transparent;
+	border: none;
+	padding:0;
+}
+
+#menu img {
+	width:5vw;
+	height:5vw;
+}
+
+#menu ul {
+	padding:0;
+	margin-left: 0;
+	margin-top: 0;
+}
+
+#menu li {
+	list-style-type: none;
+	border: none;
+	background-color: #dbdbf0;
+	border-radius: 6px;
+	box-shadow: 12px 12px 8px black;
+	margin: .6em 0;
+}
+
+#menu li a:link {
+	color: #555;
+	text-decoration: none;
+}
+
+#menu li a:visited {
+	color: #555;
+	text-decoration: none;
+}
+
+#menu li a:hover {
+	color: black;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+#menu li a:hover {
+	color: black;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+@keyframes menuin {
+	from {clip: rect(0px,6vw,6vw,0px);}
+	to {clip: rect(0px,90vw,90vw,0px);}
+}
+
+.menuin {
+	animation-name: menuin;
+	animation-duration: 1.5s;
+	animation-fill-mode: forwards;
+}
+
+@keyframes menuout {
+	from {clip: rect(0px,90vw,90vw,0px);}
+	to {clip: rect(0px,6vw,6vw,0px);}
+}
+
+.menuout {
+	animation-name: menuout;
+	animation-duration: 1.5s;
+	animation-fill-mode: forwards;
 }
 
 h2 {
@@ -180,6 +259,7 @@ li p {
 		margin: 4em 15% 1em 15%;
 		max-width: 70%;
 	}
+
 }
 
 @media screen and (max-width: 768px) {
@@ -204,6 +284,23 @@ li p {
 		margin-bottom: 1em;
 	}
 	
+	#menu {
+		top:5.2em;
+		padding:.5em;
+		clip: rect(0px,7vw,8vw,0px);
+		font-size: .8em;
+	}
+
+	@keyframes menuin {
+		from {clip: rect(0px,7vw,8vw,0px);}
+		to {clip: rect(0px,90vw,90vw,0px);}
+	}
+
+	@keyframes menuout {
+		from {clip: rect(0px,90vw,90vw,0px);}
+		to {clip: rect(0px,7vw,8vw,0px);}
+	}
+
 	#gh_link img{
 		margin: 5em 10% 1em 10%;
 		max-width: 80%;
