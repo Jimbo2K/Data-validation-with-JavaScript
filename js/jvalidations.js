@@ -305,10 +305,10 @@ function codeIsbn13(pisbn){
 function codeIsbn(pisbn){
 	var aux=pisbn.trim(); //trim() removes spaces at the beguinning and end
 
-	if (aux.length()===10){
+	if (aux.length===10){
 		return codeIsbn10(aux);
 	}
-	else if (aux.length()===13){
+	else if (aux.length===13){
 		return codeIsbn13(aux);
 	}
 
