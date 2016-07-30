@@ -65,7 +65,7 @@ h1 button {
 #menu {
 	position: fixed;
 	z-index: 100;
-	top:2.8em;
+	top:3.5em;
 	padding:.5em;
 	clip: rect(0px,6vw,6vw,0px);
 }
@@ -229,6 +229,10 @@ li p {
 
 	h1 img {
 		margin-left: 0;
+	}
+
+	#menu {
+		top:2.8em;
 	}
 
 	#gh_link img{
