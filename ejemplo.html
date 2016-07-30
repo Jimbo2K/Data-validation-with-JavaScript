@@ -3,14 +3,18 @@
 <head>
 	<title>Ejemplo HTML para jvalidations.js</title>
 	<meta charset="UTF-8">
-	<script src="js/jvalidations.js"></script>
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 	<link rel="stylesheet" href="css/estilo.css">
+	<link rel="shortcut icon" href="favicon.ico"/>
 </head>
 <body>
-	<h1>Ejemplo HTML de uso de la librería jvalidations.js</h1>
+	<header>
+		<h1><img src="assets/img/jvalidations.png" alt="JValidations Logo" title="JValidations"><span id="htitle"> Banco de pruebas de JValidations</span></h1>
+	</header>
 	<form action="#" name="formulario" id="formulario">
-		<label for="value1">Escriba un número en el siguiente campo (para enteros o reales):</label>
-		<input type="text" name="value1" id="value1" maxlength="15" size="15" oninput="borraSpan();">
+		<label for="value1">Usa este campo para validar datos(enteros, reales, hexadecimales...):</label>
+		<input type="text" name="value1" id="value1" maxlength="15" size="15" oninput="borraSpan();"><br>
+		<p id="aviso">Algunos botones están asociados a campos de entrada concretos en lugar de utilizar el de la línea de arriba. En esos casos el campo o campos estarán identificados por <span class="rojo"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span> y el botón correspondiente por <span class="rojo"><i class="fa fa-hand-o-right" aria-hidden="true"></i></span>, ambos del mismo color.</p>
 	</form>
 	<hr>
 	<div class="contenedor">
@@ -53,21 +57,44 @@
 			<h3>Validación de fechas</h3>
 			<input type="radio" name="dateoption" id="radio1" value="opcion1" form="formulario" checked>
 			<label for="value2" form="formulario">Escriba una fecha en el siguiente campo:</label><br>
-			<input type="text" name="value2" id="value2" maxlength="10" size="10" oninput="borraSpan();" form="formulario" placeholder="dd/mm/aaaa"><br>
+			<input type="text" name="value2" id="value2" maxlength="10" size="10" oninput="borraSpan();" form="formulario" placeholder="dd/mm/aaaa"><span class="naranja"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span><br>
 			<input type="radio" name="dateoption" id="radio2" value="opcion2" form="formulario">
 			<label for="value3" form="formulario">Escriba una fecha utilizando los siguientes campos:</label><br>
 			<input type="text" name="value3_1" id="value3_1" maxlength="2" size="2" oninput="borraSpan();" form="formulario" placeholder="dd">/
 			<input type="text" name="value3_2" id="value3_2" maxlength="2" size="2" oninput="borraSpan();" form="formulario" placeholder="mm">/
-			<input type="text" name="value3_3" id="value3_3" maxlength="4" size="4" oninput="borraSpan();" form="formulario" placeholder="aaaa"><br>
+			<input type="text" name="value3_3" id="value3_3" maxlength="4" size="4" oninput="borraSpan();" form="formulario" placeholder="aaaa"><span class="naranja"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span><br>
 			<input type="checkbox" name="edad" id="edad" form="formulario"><label for="edad">Marca esta opción si se trata de una fecha de nacimiento</label><br>
-			<button type="button" id="botdate1">stringIsDate</button><br>
-			<textarea name="datemens" id="datemens" form="formulario" cols="30" rows="5"></textarea>
+			<button type="button" id="botdate1">stringIsDate</button><span class="naranja"><i class="fa fa-hand-o-left" aria-hidden="true"></i></span><br>
+			<textarea name="datemens" id="datemens" form="formulario" cols="45" rows="3"></textarea><br><hr>
+			<button type="button" id="botdate2">stringIsYear</button><span id="out20"></span>
+		</div>
+		
+		<div class="bloque">
+			<h3>Validación de hexadecimales</h3>
+			<ul>
+				<li>
+					<p>Puedes validar también el formato #xyz ó #xxyyzz</p>
+					<button type="button" id="bothex1" >stringIsHex</button><span id="out16"></span>
+				</li>
+			</ul>
+			<h3>Validación de códigos ISBN</h3>
+			<ul>
+				<li>
+					<p>Ejemplo de prueba: 123456789X, 1452367892</p>
+					<button type="button" id="botisbn1" >codeIsbn10</button><span id="out17"></span>
+				</li>
+				<li>
+					<p>Ejemplo de prueba: 1234567890128, 1111111111116</p>
+					<button type="button" id="botisbn2" >codeIsbn13</button><span id="out18"></span>
+				</li>
+				<li><button type="button" id="botisbn3">codeIsbn</button><span id="out19"></span></li>
+			</ul>
 		</div>
 
 		<div class="bloque">
 			<h3>Validación de teléfonos</h3><br>
-			<label for="telefono">Introduce un número fijo de teléfono</label>
-			<input type="text" name="telefono" id="telefono" maxlength="20" size="20" oninput="borraSpan();" form="formulario"><br><br>
+			<label for="telefono">Introduce un número fijo de teléfono</label><br>
+			<input type="text" name="telefono" id="telefono" maxlength="20" size="20" oninput="borraSpan();" form="formulario"><span class="verde"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span><br><br>
 			<label for="pais">Escoge un país</label>
 			<select name="pais" id="pais" oninput="borraSpan();">
 				<option value="" selected>- por defecto -</option>
@@ -80,9 +107,11 @@
 			<p>Francia: <strong>0x xx xx xx xx</strong> ó <strong>+33 x xxxxxxxx</strong></p>
 			<p>Irlanda: <strong>0xxxxx xxx xxx</strong> ó <strong>0xxxxx xxxxxx</strong> ó <strong>+353 0xxxxx xxxxxx</strong></p>
 			<p>Italia: <strong>06 xxxxxxxx</strong> ó <strong>+39 06 xxxxxxxx</strong></p>
-			<button type="button" id="botphone1">fixedPhone</button><span id="out15"></span>
+			<span class="verde"><i class="fa fa-hand-o-right" aria-hidden="true"></i></span><button type="button" id="botphone1">fixedPhone</button><span id="out15"></span>
 		</div>
+
 	</div>
+	<script src="js/jvalidations.js"></script>
 	<script src="js/ejemplo.js"></script>
 </body>
 </html>

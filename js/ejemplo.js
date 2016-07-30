@@ -29,7 +29,6 @@ function eventClick(e){
     tagOfElement = e.target.tagName;
     idOfElement = e.target.id;
   }
-  console.log('tagname '+tagOfElement+ ' id '+idOfElement);
   var strFunction;
   /*If the event has been generated from a button launch the fucntion
   Si el evento lo ha generado un botón lanza la función*/
@@ -55,9 +54,13 @@ document.getElementById('radio2').onclick=function() {
 
 function borraSpan() {
 	var salidas=document.getElementsByTagName('SPAN');
-	var i;
-	for (i in salidas) {
-		salidas[i].innerHTML='';
+	var aux=salidas[0];
+	var i,index;
+	for (i=0; i<salidas.length; i++) {
+		index=salidas[i].id.indexOf('out');
+		if (index!==-1){
+			salidas[i].innerHTML='';
+		}
 	}
 	document.getElementById('datemens').value='';
 }
@@ -152,6 +155,30 @@ function float7(){
 	salida.innerHTML=validFloat(campo.value,arg.value);
 }
 
+function hex1(){
+	var campo=document.getElementById('value1');
+	var salida=document.getElementById('out16');
+	salida.innerHTML=stringIsHex(campo.value);
+}
+
+function isbn1(){
+	var campo=document.getElementById('value1');
+	var salida=document.getElementById('out17');
+	salida.innerHTML=codeIsbn10(campo.value);
+}
+
+function isbn2(){
+	var campo=document.getElementById('value1');
+	var salida=document.getElementById('out18');
+	salida.innerHTML=codeIsbn13(campo.value);
+}
+
+function isbn3(){
+	var campo=document.getElementById('value1');
+	var salida=document.getElementById('out19');
+	salida.innerHTML=codeIsbn(campo.value);
+}
+
 function date1(){
 	var chkopt=document.getElementById('radio1').checked;
 	var cadenaFecha;
@@ -173,6 +200,12 @@ function date1(){
 			document.getElementById('datemens').value+=salida[i] + '\n';
 		}
 	}
+}
+
+function date2() {
+	var campo=document.getElementById('value1');
+	var salida=document.getElementById('out20');
+	salida.innerHTML=stringIsYear(campo.value);
 }
 
 function phone1(){
